@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RIKU の 部屋丨{{ filename }}</title>
+    <style> html, body { margin: 0; padding: 0; } </style>
+</head>
+<body>
+<div style="display: block; font-size: 14px; line-height: 24px; font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;"
+     id="editor">{{ content }}
+</div>
+<script src="static/js/keymaster.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/theme-tomorrow-night.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/mode-markdown.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/tomorrow_night");
+        var MarkdownMode = ace.require("ace/mode/markdown").Mode;
+        editor.session.setMode(new MarkdownMode());
+        var lastSave = editor.getValue();
+        function save() {
+            if (lastSave == editor.getValue()) return;
+            $.ajax({type: 'POST', url: window.location.href, data: { data: editor.getValue() }});
+            lastSave = editor.getValue();
+        }
+        setInterval(save, 3000);
+</script>
+</body>
+</html>
