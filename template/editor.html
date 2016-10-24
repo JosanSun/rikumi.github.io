@@ -23,9 +23,14 @@
         function save() {
             if (lastSave == editor.getValue()) return;
             $.ajax({type: 'POST', url: window.location.href, data: { data: editor.getValue() }});
+            var oldTitle = window.document.title;
+            window.document.title = '[已保存]' + oldTitle;
+            setTimeout(function() {
+                window.document.title = oldTitle;
+            }, 1000);
             lastSave = editor.getValue();
         }
-        setInterval(save, 3000);
+        setInterval(save, 5000);
 </script>
 </body>
 </html>
