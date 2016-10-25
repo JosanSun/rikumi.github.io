@@ -29,6 +29,8 @@ def data_path(file_name=''):
 
 
 def command(string):
+    if not os.path.exists(data_path()):
+        os.system('cd ' + os.path.dirname(__file__) + ' && mkdir data')
     os.system('cd ' + os.path.join(os.path.dirname(__file__), 'data') + ' && ' + string)
 
 
