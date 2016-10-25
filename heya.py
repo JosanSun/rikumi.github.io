@@ -118,30 +118,32 @@ class EditorHandler(BaseHandler):
     def post(self, filename='index.md'):
         # 不允许异步访问, 防止写入到错误的分支
         with lock:
-            data = self.get_argument('data').decode('utf8')
-            branch = self.get_argument('branch')
-            filename = filename.replace('/../', '/')
-            if not filename.endswith('.md'):
-                self.write(u'// 文件名不合法，保存失败。\n' + data)
-                return
+            if self.get_argument('data', default=None) is not None:
+                data = self.get_argument('data').decode('utf8')
+                branch = self.get_argument('branch')
+                filename = filename.replace('/../', '/')
+                if not filename.endswith('.md'):
+                    self.write(u'// 文件名不合法，保存失败。\n' + data)
+                    return
 
-            if branch not in branches:
-                self.write(u'// 会话已超时，保存失败。请备份内容并刷新页面后再试。\n' + data)
-                return
+                if branch not in branches:
+                    self.write(u'// 会话已超时，保存失败。请备份内容并刷新页面后再试。\n' + data)
+                    return
 
-            # 切换到该用户所在分支
-            command('git checkout ' + branch)
+                # 切换到该用户所在分支
+                command('git checkout ' + branch)
 
-            # 执行更改
-            write_file(filename, data)
+                # 执行更改
+                write_file(filename, data)
 
-            # 提交并推送, 此时可能会出现冲突
-            command('git add * && git commit -m "Saved by remote user"')
-            command('git checkout master && git merge ' + branch + ' -m "Auto-merged"')
+                # 提交并推送, 此时可能会出现冲突
+                command('git add * && git commit -m "Saved by remote user"')
+                command('git checkout master && git merge ' + branch + ' -m "Auto-merged"')
 
-            self.auto_fix_conflict(filename)
+                self.auto_fix_conflict(filename)
+                schedule_delete_branch(branch)
+
             self.write(read_file(filename))
-            schedule_delete_branch(branch)
 
     def auto_fix_conflict(self, filename):
         file_content = read_file(filename)
