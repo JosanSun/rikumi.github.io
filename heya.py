@@ -141,6 +141,7 @@ class EditorHandler(BaseHandler):
                 command('git checkout master && git merge ' + branch + ' -m "Auto-merged"')
 
                 self.auto_fix_conflict(filename)
+                command('git checkout ' + branch + ' && git merge master -m "Auto-backmerged" && git checkout master')
                 schedule_delete_branch(branch)
 
             self.write(read_file(filename))
