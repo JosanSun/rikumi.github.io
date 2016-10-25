@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>RIKU の 部屋丨{{ filename }}</title>
-    <style> html, body { margin: 0; padding: 0; } </style>
+    <style> html, body { margin: 0; padding: 0; background: #222; color: #222; } </style>
 </head>
-<body>
-<div style="display: block; font-size: 14px; line-height: 24px; font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;"
-     id="editor">{{ content }}
-</div>
+<body onload="bodyOnLoad()">
+<button id="btn" onclick="save()" style="display: block; width: 100%; height: 40px; border: 0; background: #222; color: #ccc; font-size: 15px">保存并同步</button>
+<div style="display: block; font-size: 14px; line-height: 24px; font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif; position: absolute; top: 40px; left: 0px; right: 0px; bottom: 0px;"
+     id="editor">{{ content }}</div>
 <script src="static/js/keymaster.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/theme-tomorrow-night.js" type="text/javascript" charset="utf-8"></script>
@@ -20,18 +20,19 @@
         editor.setTheme("ace/theme/tomorrow_night");
         var MarkdownMode = ace.require("ace/mode/markdown").Mode;
         editor.session.setMode(new MarkdownMode());
-        var lastSave = editor.getValue();
+
         function save() {
-            if (lastSave == editor.getValue()) return;
-            $.ajax({type: 'POST', url: window.location.href, data: { data: editor.getValue() }});
-            var oldTitle = window.document.title;
-            window.document.title = '[已保存]' + oldTitle;
-            setTimeout(function() {
-                window.document.title = oldTitle;
-            }, 1000);
-            lastSave = editor.getValue();
+            $.ajax({ type: 'POST', url: window.location.href, data: {
+                data: editor.getValue(),
+                branch: "{{ branch }}"
+            }, success: function (content) {
+                editor.setValue(content);
+                $("#btn").html('同步成功');
+                setTimeout(function() {
+                    $("#btn").html('保存并同步');
+                }, 1000);
+            }});
         }
-        setInterval(save, 5000);
 </script>
 </body>
 </html>

@@ -5,7 +5,66 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
+import uuid
+import re
+import threading
+from threading import Timer
 from tornado.web import StaticFileHandler, RequestHandler
+
+lock = threading.Lock()
+conflict_head = re.compile(r'<<<<<<< HEAD\n')
+conflict_split = re.compile(r'=======\n')
+conflict_tail = re.compile(r'\n>>>>>>> [0-9a-f]{8}')
+blacklines = re.compile(r'\n+$')
+
+branches = set()
+timers = dict()
+timeout = 600
+
+
+def data_path(file_name=''):
+    if file_name == '':
+        return os.path.join(os.path.dirname(__file__), 'data')
+    return os.path.join(os.path.dirname(__file__), 'data', file_name)
+
+
+def command(string):
+    os.system('cd ' + os.path.join(os.path.dirname(__file__), 'data') + ' && ' + string)
+
+
+def read_file(filename, default=''):
+    file_content = default
+    try:
+        file_object = open(data_path(filename))
+        try:
+            file_content = file_object.read()
+        finally:
+            file_object.close()
+    except:
+        pass
+    return file_content
+
+
+def write_file(filename, data):
+    try:
+        file_object = open(data_path(filename), 'w')
+        try:
+            file_object.write(data)
+        finally:
+            file_object.close()
+    except:
+        pass
+
+
+def schedule_delete_branch(branch):
+    if branch in timers:
+        timers[branch].cancel()
+
+    def timer_func():
+        branches.remove(branch)
+        command('git branch -d ' + branch)
+
+    timer = Timer(timeout, timer_func)
 
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -27,7 +86,6 @@ class Application(tornado.web.Application):
             cookie_secret='365B3932BBBA6182B2D899B494468874',
         )
         tornado.web.Application.__init__(self, handlers, **settings)
-        self.filepath = os.path.join(os.path.dirname(__file__), 'files')
 
 
 class EditorHandler(BaseHandler):
@@ -35,33 +93,61 @@ class EditorHandler(BaseHandler):
         filename = filename.replace('/../', '/')
         if not filename.endswith('.md'):
             self.redirect(filename + '.md')
-        file_content = u'// New file'
-        try:
-            file_object = open(os.path.join(os.path.dirname(__file__), 'data', filename))
-            try:
-                file_content = file_object.read()
-            finally:
-                file_object.close()
-        except:
-            pass
-        self.render('editor.html', filename=filename, content=file_content)
+        file_content = read_file(filename, default=u'// 这是一个新文件，你可以在此随意发挥。')
+
+        branch = str(uuid.uuid4())[:8]
+
+        command('git branch ' + branch)
+        branches.add(branch)
+
+        self.render('editor.html', filename=filename, content=file_content, branch=branch)
+        schedule_delete_branch(branch)
 
     def post(self, filename='index.md'):
-        data = self.get_argument('data')
-        filename = filename.replace('/../', '/')
-        if not filename.endswith('.md'):
-            self.redirect(filename + '.md')
-        file_content = u'// New file'
-        try:
-            file_object = open(os.path.join(os.path.dirname(__file__), 'data', filename), 'w')
-            try:
-                file_object.write(data)
-            finally:
-                file_object.close()
-        except:
-            pass
+        # 不允许异步访问, 防止写入到错误的分支
+        with lock:
+            data = self.get_argument('data')
+            branch = self.get_argument('branch')
+            filename = filename.replace('/../', '/')
+            if not filename.endswith('.md'):
+                self.write(u'// 文件名不合法，保存失败。\n' + data)
+                return
+
+            if branch not in branches:
+                self.write(u'// 会话已超时，保存失败。请备份内容并刷新页面后再试。\n' + data)
+                return
+
+            # 切换到该用户所在分支
+            command('git checkout ' + branch)
+
+            # 执行更改
+            write_file(filename, data)
+
+            # 提交并推送, 此时可能会出现冲突
+            command('git add * && git commit -m "Saved by remote user"')
+            command('git checkout master && git merge ' + branch)
+
+            self.auto_fix_conflict(filename)
+            self.write(read_file(filename))
+            schedule_delete_branch(branch)
+
+    def auto_fix_conflict(self, filename):
+        file_content = read_file(filename)
+        file_content = blacklines.sub('', file_content)
+        if file_content.find("<<<<<<< HEAD") >= 0:
+            file_content = conflict_head.sub('', file_content)
+            file_content = conflict_split.sub('', file_content)
+            file_content = conflict_tail.sub('', file_content)
+            write_file(filename, file_content)
+            command('git add * && git commit -m "Fixed conflict"')
 
 
 if __name__ == '__main__':
+    if not os.path.exists(data_path('.git')):
+        command('git init && git checkout -b master && git add * && git commit -m "Original data"')
     Application().listen(4000)
-    tornado.ioloop.IOLoop.instance().start()
+    try:
+        tornado.ioloop.IOLoop.instance().start()
+    except:
+        for branch in branches:
+            command('git branch -d ' + branch)
