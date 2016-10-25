@@ -153,7 +153,7 @@ class EditorHandler(BaseHandler):
 
 if __name__ == '__main__':
     if not os.path.exists(data_path('.git')):
-        command('git init && git checkout -b master && git add * && git commit -m "Original data"')
+        command('git init && git checkout -b master && touch index.md && git add * && git commit -m "Original data"')
     Application().listen(4000)
     try:
         tornado.ioloop.IOLoop.instance().start()
