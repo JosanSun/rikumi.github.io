@@ -80,10 +80,17 @@ class BaseHandler(tornado.web.RequestHandler):
         pass
 
 
+class GitPullHandler(BaseHandler):
+    def get(self):
+        os.system('cd ' + os.path.dirname(__file__) + ' && git pull')
+        self.redirect('/')
+
+
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [  # 请注意所有要输入uuid的位置要用([^/]+)而不是(\w+),否则无法识别旧版应用用户
             (r'/', EditorHandler),
+            (r'/pull', GitPullHandler),
             (r'/static', StaticFileHandler, {'path': os.path.join(os.path.dirname(__file__), 'static')}),
             (r'/(.+)', EditorHandler)
         ]
