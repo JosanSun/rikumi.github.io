@@ -73,6 +73,8 @@ def schedule_delete_branch(branch):
         command('git branch -d ' + branch)
 
     timer = Timer(timeout, timer_func)
+    timers[branch] = timer
+    timer.start()
 
 
 class BaseHandler(tornado.web.RequestHandler):
