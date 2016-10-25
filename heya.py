@@ -84,6 +84,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
 class GitPullHandler(BaseHandler):
     def get(self):
+        print('cd ' + os.path.dirname(__file__) + ' && git pull')
         os.system('cd ' + os.path.dirname(__file__) + ' && git pull')
         self.redirect('/')
 
