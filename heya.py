@@ -11,6 +11,8 @@ import threading
 from threading import Timer
 from tornado.web import StaticFileHandler, RequestHandler
 
+curr_path = os.path.dirname(os.path.abspath(__file__))
+
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -27,17 +29,17 @@ timeout = 600
 
 def data_path(file_name=''):
     if file_name == '':
-        return os.path.join(os.path.dirname(__file__), 'data')
-    return os.path.join(os.path.dirname(__file__), 'data', file_name)
+        return os.path.join(curr_path, 'data')
+    return os.path.join(curr_path, 'data', file_name)
 
 
 def command(string):
     if os.path.isfile(data_path()):
-        os.system('cd ' + os.path.dirname(__file__) + ' && rm -f data')
+        os.system('cd ' + curr_path + ' && rm -f data')
     if not os.path.exists(data_path()):
-        os.system('cd ' + os.path.dirname(__file__))
+        os.system('cd ' + curr_path)
         os.system('mkdir data')
-    os.system('cd ' + os.path.join(os.path.dirname(__file__), 'data') + ' && ' + string)
+    os.system('cd ' + os.path.join(curr_path, 'data') + ' && ' + string)
 
 
 def read_file(filename, default=''):
@@ -84,8 +86,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
 class GitPullHandler(BaseHandler):
     def get(self):
-        print('cd ' + os.path.dirname(__file__) + ' && git pull')
-        os.system('cd ' + os.path.dirname(__file__) + ' && git pull')
+        os.system('cd ' + curr_path + ' && git pull')
         self.redirect('/')
 
 
@@ -94,13 +95,13 @@ class Application(tornado.web.Application):
         handlers = [  # 请注意所有要输入uuid的位置要用([^/]+)而不是(\w+),否则无法识别旧版应用用户
             (r'/', EditorHandler),
             (r'/pull', GitPullHandler),
-            (r'/static', StaticFileHandler, {'path': os.path.join(os.path.dirname(__file__), 'static')}),
+            (r'/static', StaticFileHandler, {'path': os.path.join(curr_path, 'static')}),
             (r'/(.+)', EditorHandler)
         ]
         settings = dict(
             debug=True,
-            static_path=os.path.join(os.path.dirname(__file__), 'static'),
-            template_path=os.path.join(os.path.dirname(__file__), 'template'),
+            static_path=os.path.join(curr_path, 'static'),
+            template_path=os.path.join(curr_path, 'template'),
             cookie_secret='365B3932BBBA6182B2D899B494468874',
         )
         tornado.web.Application.__init__(self, handlers, **settings)
