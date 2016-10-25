@@ -29,6 +29,8 @@ def data_path(file_name=''):
 
 
 def command(string):
+    if os.path.isfile(data_path()):
+        os.system('cd ' + os.path.dirname(__file__) + ' && rm -f data')
     if not os.path.exists(data_path()):
         os.system('cd ' + os.path.dirname(__file__) + ' && mkdir data')
     os.system('cd ' + os.path.join(os.path.dirname(__file__), 'data') + ' && ' + string)
@@ -91,10 +93,14 @@ class Application(tornado.web.Application):
 
 
 class EditorHandler(BaseHandler):
-    def get(self, filename='index.md'):
+    def get(self, filename=''):
         filename = filename.replace('/../', '/')
+        if filename == '':
+            self.redirect('index.md')
+            return
         if not filename.endswith('.md'):
             self.redirect(filename + '.md')
+            return
         file_content = read_file(filename, default=u'// 这是一个新文件，你可以在此随意发挥。')
 
         branch = str(uuid.uuid4())[:8]
