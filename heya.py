@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os.path
-
+import sys
 import tornado.httpserver
 import tornado.ioloop
 import tornado.options
@@ -10,6 +10,9 @@ import re
 import threading
 from threading import Timer
 from tornado.web import StaticFileHandler, RequestHandler
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 lock = threading.Lock()
 conflict_head = re.compile(r'<<<<<<< HEAD\n')
