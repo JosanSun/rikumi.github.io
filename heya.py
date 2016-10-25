@@ -141,6 +141,10 @@ class EditorHandler(BaseHandler):
                 command('git checkout master && git merge ' + branch + ' -m "Auto-merged"')
 
                 self.auto_fix_conflict(filename)
+
+                # 此时 master 为有冲突版本, 该版本在用户自己的分支上没有存档过, 因此与用户在自己分支上修复冲突后的版本不可比。
+                # 这将产生新的冲突。所以这里需要将这个冲突版本往回同步到用户自己的分支上,
+                # 使用户修复冲突后的版本与冲突版本在同一个分支上, 具有可比性, 系统认为用户修复冲突的版本超前于冲突, 因此冲突解决。
                 command('git checkout ' + branch + ' && git merge master -m "Auto-backmerged" && git checkout master')
                 schedule_delete_branch(branch)
 
