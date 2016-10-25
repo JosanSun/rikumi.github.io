@@ -116,6 +116,7 @@ class EditorHandler(BaseHandler):
         # 不允许异步访问, 防止写入到错误的分支
         with lock:
             data = self.get_argument('data')
+            print 'data=' + data
             branch = self.get_argument('branch')
             filename = filename.replace('/../', '/')
             if not filename.endswith('.md'):
