@@ -20,6 +20,7 @@
         editor.setTheme("ace/theme/tomorrow_night");
         var MarkdownMode = ace.require("ace/mode/markdown").Mode;
         editor.session.setMode(new MarkdownMode());
+        editor.session.setUseWrapMode("free");
 
         var lastSave = editor.getValue();
         setInterval(function() {
