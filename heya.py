@@ -150,7 +150,7 @@ class EditorHandler(BaseHandler):
             file_content = conflict_head.sub(u'//! 此处发生编辑冲突。你的版本：', file_content)
             file_content = conflict_split.sub(u'//! 其他人编辑的版本：', file_content)
             file_content = conflict_tail.sub(u'//! 请及时解决本冲突并删除这段注释。', file_content)
-            file_content = u'// 文件已被其他人编辑，请解决文件中的冲突并保存。' + file_content
+            file_content = u'// 文件已被其他人编辑，请解决文件中的冲突并保存。\n' + file_content
             write_file(filename, file_content)
             command('git add * && git commit -m "Fixed conflict"')
 
