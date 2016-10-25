@@ -15,9 +15,9 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 lock = threading.Lock()
-conflict_head = re.compile(r'<<<<<<< HEAD\n')
-conflict_split = re.compile(r'=======\n')
-conflict_tail = re.compile(r'\n>>>>>>> [0-9a-f]{8}')
+conflict_head = re.compile(r'<<<<<<< HEAD')
+conflict_split = re.compile(r'=======')
+conflict_tail = re.compile(r'>>>>>>> [0-9a-f]{8}')
 blacklines = re.compile(r'\n+$')
 
 branches = set()
@@ -147,9 +147,10 @@ class EditorHandler(BaseHandler):
         file_content = read_file(filename)
         file_content = blacklines.sub('', file_content)
         if file_content.find("<<<<<<< HEAD") >= 0:
-            file_content = conflict_head.sub('', file_content)
-            file_content = conflict_split.sub('', file_content)
-            file_content = conflict_tail.sub('', file_content)
+            file_content = conflict_head.sub(u'//! 此处发生编辑冲突。你的版本：', file_content)
+            file_content = conflict_split.sub(u'//! 其他人编辑的版本：', file_content)
+            file_content = conflict_tail.sub(u'//! 请及时解决本冲突并删除这段注释。', file_content)
+            file_content = u'// 文件已被其他人编辑，请解决文件中的冲突并保存。' + file_content
             write_file(filename, file_content)
             command('git add * && git commit -m "Fixed conflict"')
 
