@@ -153,9 +153,11 @@ class EditorHandler(BaseHandler):
 
 if __name__ == '__main__':
     if not os.path.exists(data_path('.git')):
+        print 'First time to run. Initializing...'
         command('git config user.email "nobody@example.com"')
         command('git config user.name "nobody"')
         command('git init && git checkout -b master && touch index.md && git add * && git commit -m "Original data"')
+        print 'Initialization complete. Have fun!'
     Application().listen(4000)
     try:
         tornado.ioloop.IOLoop.instance().start()
