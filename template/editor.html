@@ -20,10 +20,14 @@
         editor.setTheme("ace/theme/tomorrow_night");
         var MarkdownMode = ace.require("ace/mode/markdown").Mode;
         editor.session.setMode(new MarkdownMode());
-        $("#editor").change(function() {
-            changed = true;
-            $("#btn").html('保存并同步');
-        });
+
+        var lastSave = editor.getValue();
+        setInterval(function() {
+            if (editor.getValue() != lastSave) {
+                changed = true;
+                $("#btn").html('保存并同步');
+            }
+        }, 1000);
 
         var changed = false;
         function save() {
@@ -31,6 +35,7 @@
                 data: editor.getValue(),
                 branch: "{{ branch }}"
             } : {}, success: function (content) {
+                lastSave = content;
                 editor.setValue(content);
                 $("#btn").html('同步成功');
                 setTimeout(function() {
