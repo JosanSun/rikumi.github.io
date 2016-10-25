@@ -20,10 +20,10 @@
         editor.setTheme("ace/theme/tomorrow_night");
         var MarkdownMode = ace.require("ace/mode/markdown").Mode;
         editor.session.setMode(new MarkdownMode());
-        editor.onChange = function() {
+        $("#editor").change(function() {
             changed = true;
             $("#btn").html('保存并同步');
-        }
+        });
 
         var changed = false;
         function save() {
