@@ -137,7 +137,7 @@ class EditorHandler(BaseHandler):
 
             # 提交并推送, 此时可能会出现冲突
             command('git add * && git commit -m "Saved by remote user"')
-            command('git checkout master && git merge ' + branch)
+            command('git checkout master && git merge ' + branch + ' -m Auto-merged')
 
             self.auto_fix_conflict(filename)
             self.write(read_file(filename))
