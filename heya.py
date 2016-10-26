@@ -89,11 +89,19 @@ class GitPullHandler(BaseHandler):
         self.redirect('/')
 
 
+class GitTagHandler(BaseHandler):
+    def get(self, tag_name='regular'):
+        command('git checkout master && git tag -f ' + tag_name)
+        self.redirect('/')
+
+
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [  # 请注意所有要输入uuid的位置要用([^/]+)而不是(\w+),否则无法识别旧版应用用户
             (r'/', EditorHandler),
             (r'/pull', GitPullHandler),
+            (r'/tag', GitTagHandler),
+            (r'/tag/(\d+)', GitTagHandler),
             (r'/static', StaticFileHandler, {'path': os.path.join(curr_path, 'static')}),
             (r'/(.+)', EditorHandler)
         ]
@@ -170,12 +178,6 @@ class EditorHandler(BaseHandler):
             file_content = u'// 文件已被其他人编辑，请解决文件中的冲突并保存。\n' + file_content
             write_file(filename, file_content)
             command('git add * && git commit -m "Fixed conflict"')
-
-
-class GitTagHandler(BaseHandler):
-    def get(self, tag_name):
-        command('git checkout master && git tag -f ' + tag_name)
-        self.redirect('/')
 
 
 if __name__ == '__main__':
