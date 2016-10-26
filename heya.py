@@ -37,8 +37,7 @@ def command(string):
     if os.path.isfile(data_path()):
         os.system('cd ' + curr_path + ' && rm -f data')
     if not os.path.exists(data_path()):
-        os.system('cd ' + curr_path)
-        os.system('mkdir data')
+        os.system('cd ' + curr_path + ' && mkdir data')
     os.system('cd ' + os.path.join(curr_path, 'data') + ' && ' + string)
 
 
@@ -171,6 +170,12 @@ class EditorHandler(BaseHandler):
             file_content = u'// 文件已被其他人编辑，请解决文件中的冲突并保存。\n' + file_content
             write_file(filename, file_content)
             command('git add * && git commit -m "Fixed conflict"')
+
+
+class GitTagHandler(BaseHandler):
+    def get(self, tag_name):
+        command('git checkout master && git tag -f ' + tag_name)
+        self.redirect('/')
 
 
 if __name__ == '__main__':
