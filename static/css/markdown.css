@@ -101,7 +101,8 @@
 .markdown-body h2 {
 	padding-bottom:0.3em;
 	font-size:1.5em;
-	border-bottom:1px solid #eee
+	border-bottom:1px solid #eee;
+    display: inline-block;
 }
 .markdown-body h3 {
 	font-size:1.25em
