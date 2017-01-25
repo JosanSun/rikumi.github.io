@@ -81,5 +81,6 @@ button, input, textarea {
 
     #content {
         margin-left: 0;
+        padding: 25px;
     }
 }
