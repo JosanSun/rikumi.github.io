@@ -1,81 +1,57 @@
 # -*- coding: utf-8 -*-
 import os.path
 import sys
+import json
+import urllib
+from urllib import quote
 import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
-import uuid
-import re
-import threading
-from threading import Timer
+from tornado.gen import Task
 from tornado.web import StaticFileHandler, RequestHandler
-
-curr_path = os.path.dirname(os.path.abspath(__file__))
+from tornado.httpclient import HTTPRequest, HTTPClient
 
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-lock = threading.Lock()
-conflict_head = re.compile(r'<<<<<<< HEAD')
-conflict_split = re.compile(r'=======')
-conflict_tail = re.compile(r'>>>>>>> [0-9a-f]{8}')
-blacklines = re.compile(r'\n+$')
 
-branches = set()
-timers = dict()
-timeout = 600
+def url(file_name=''):
+    return 'https://raw.githubusercontent.com/' + quote(str(username)) + '/HeyaData/master/' + quote(str(file_name))
 
 
-def data_path(file_name=''):
-    if file_name == '':
-        return os.path.join(curr_path, 'data')
-    return os.path.join(curr_path, 'data', file_name)
-
-
-def command(string):
-    if os.path.isfile(data_path()):
-        os.system('cd ' + curr_path + ' && rm -f data')
-    if not os.path.exists(data_path()):
-        os.system('cd ' + curr_path + ' && mkdir data')
-    os.system('cd ' + os.path.join(curr_path, 'data') + ' && ' + string)
-
-
-def read_file(filename, default=''):
-    file_content = default
+def get(file, default_file='', default_content=''):
     try:
-        file_object = open(data_path(filename))
-        try:
-            file_content = file_object.read()
-        finally:
-            file_object.close()
+        client = HTTPClient()
+        request = HTTPRequest(url(file), method='GET', request_timeout=10)
+        response = client.fetch(request)
+        return response.body
     except:
-        pass
-    return file_content
+        if default_file == '':
+            return default_content
+        else:
+            try:
+                client = HTTPClient()
+                request = HTTPRequest(url(default_file), method='GET', request_timeout=10)
+                response = client.fetch(request)
+                return response.body
+            except:
+                return default_content
 
 
-def write_file(filename, data):
-    try:
-        file_object = open(data_path(filename), 'w')
+curr_path = os.path.dirname(os.path.abspath(__file__))
+username = str(os.popen('git config --global --get user.name').read()).replace('\n', '')
+
+
+class Config:
+    def __init__(self, json_data):
+        self.json_data = json.loads(json_data)
+
+    def __getattr__(self, item):
         try:
-            file_object.write(data)
-        finally:
-            file_object.close()
-    except:
-        pass
-
-
-def schedule_delete_branch(branch):
-    if branch in timers:
-        timers[branch].cancel()
-
-    def timer_func():
-        branches.remove(branch)
-        command('git branch -d ' + branch)
-
-    timer = Timer(timeout, timer_func)
-    timers[branch] = timer
-    timer.start()
+            return self.json_data[item]
+        except KeyError:
+            return ''
 
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -83,27 +59,11 @@ class BaseHandler(tornado.web.RequestHandler):
         pass
 
 
-class GitPullHandler(BaseHandler):
-    def get(self):
-        os.system('cd ' + curr_path + ' && git pull')
-        self.redirect('/')
-
-
-class GitTagHandler(BaseHandler):
-    def get(self, tag_name='regular'):
-        command('git checkout master && git tag -f ' + tag_name)
-        self.redirect('/')
-
-
 class Application(tornado.web.Application):
     def __init__(self):
-        handlers = [  # 请注意所有要输入uuid的位置要用([^/]+)而不是(\w+),否则无法识别旧版应用用户
-            (r'/', EditorHandler),
-            (r'/pull', GitPullHandler),
-            (r'/tag', GitTagHandler),
-            (r'/tag/(\d+)', GitTagHandler),
+        handlers = [
+            (r'/(.*)', ViewerHandler),
             (r'/static', StaticFileHandler, {'path': os.path.join(curr_path, 'static')}),
-            (r'/(.+)', EditorHandler)
         ]
         settings = dict(
             debug=True,
@@ -114,81 +74,21 @@ class Application(tornado.web.Application):
         tornado.web.Application.__init__(self, handlers, **settings)
 
 
-class EditorHandler(BaseHandler):
+class ViewerHandler(BaseHandler):
     def get(self, filename=''):
-        filename = filename.replace('/../', '/')
+        config = Config(get('config.json', default_content='{}'))
         if filename == '':
-            self.redirect('index.md')
-            return
+            filename = config.index
         if not filename.endswith('.md'):
-            self.redirect(filename + '.md')
-            return
-        file_content = read_file(filename, default=u'// 这是一个新文件，你可以在此随意发挥。')
+            filename += '.md'
+        file_content = get(filename, default_file='404.md')
 
-        branch = str(uuid.uuid4())[:8]
-
-        command('git branch ' + branch)
-        branches.add(branch)
-
-        self.render('editor.html', filename=filename, content=file_content, branch=branch)
-        schedule_delete_branch(branch)
-
-    def post(self, filename='index.md'):
-        # 不允许异步访问, 防止写入到错误的分支
-        with lock:
-            if self.get_argument('data', default=None) is not None:
-                data = self.get_argument('data').decode('utf8')
-                branch = self.get_argument('branch')
-                filename = filename.replace('/../', '/')
-                if not filename.endswith('.md'):
-                    self.write(u'// 文件名不合法，保存失败。\n' + data)
-                    return
-
-                if branch not in branches:
-                    self.write(u'// 会话已超时，保存失败。请备份内容并刷新页面后再试。\n' + data)
-                    return
-
-                # 切换到该用户所在分支
-                command('git checkout ' + branch)
-
-                # 执行更改
-                write_file(filename, data)
-
-                # 提交并推送, 此时可能会出现冲突
-                command('git add * && git commit -m "Saved by remote user"')
-                command('git checkout master && git merge ' + branch + ' -m "Auto-merged"')
-
-                self.auto_fix_conflict(filename)
-
-                # 此时 master 为有冲突版本, 该版本在用户自己的分支上没有存档过, 因此与用户在自己分支上修复冲突后的版本不可比。
-                # 这将产生新的冲突。所以这里需要将这个冲突版本往回同步到用户自己的分支上,
-                # 使用户修复冲突后的版本与冲突版本在同一个分支上, 具有可比性, 系统认为用户修复冲突的版本超前于冲突, 因此冲突解决。
-                command('git checkout ' + branch + ' && git merge master -m "Auto-backmerged" && git checkout master')
-                schedule_delete_branch(branch)
-
-            self.write(read_file(filename))
-
-    def auto_fix_conflict(self, filename):
-        file_content = read_file(filename)
-        file_content = blacklines.sub('', file_content)
-        if file_content.find("<<<<<<< HEAD") >= 0:
-            file_content = conflict_head.sub(u'//! 此处发生编辑冲突。其他人编辑的版本：', file_content)
-            file_content = conflict_split.sub(u'//! 你的版本：', file_content)
-            file_content = conflict_tail.sub(u'//! 请及时解决本冲突并删除这段注释。', file_content)
-            file_content = u'// 文件已被其他人编辑，请解决文件中的冲突并保存。\n' + file_content
-            write_file(filename, file_content)
-            command('git add * && git commit -m "Fixed conflict"')
+        self.render('viewer.html', filename=filename[:-3], content=file_content, config=config, quote=quote)
 
 
 if __name__ == '__main__':
-    if not os.path.exists(data_path('.git')):
-        print 'First time to run. Initializing...'
-        print 'First please check whether this server has git email and username set, or the whole magic won\'t work.'
-        command('git init && git checkout -b master && touch index.md && git add * && git commit -m "Original data"')
-        print 'Initialization complete. Have fun!'
     Application().listen(4000)
     try:
         tornado.ioloop.IOLoop.instance().start()
     except:
-        for branch in branches:
-            command('git branch -d ' + branch)
+        pass
