@@ -69,9 +69,9 @@ class GitPullHandler(BaseHandler):
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
-            (r'/(.*)', ViewerHandler),
             (r'/pull', GitPullHandler),
             (r'/static', StaticFileHandler, {'path': os.path.join(curr_path, 'static')}),
+            (r'/(.*)', ViewerHandler),
         ]
         settings = dict(
             debug=True,
