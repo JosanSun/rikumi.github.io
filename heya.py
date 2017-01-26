@@ -65,7 +65,8 @@ class GitPullHandler(BaseHandler):
         result = ''
         proc = subprocess.Popen('git pull'.split(), stdout=subprocess.PIPE, bufsize=1)
         for line in iter(proc.stdout.readline, b''):
-            result += line, proc.communicate()
+            result += line
+        proc.communicate()
 
         config = Config(get('config.json', default_content='{}'))
         self.render('viewer.html',
