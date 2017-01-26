@@ -62,11 +62,20 @@ class BaseHandler(tornado.web.RequestHandler):
 
 class GitPullHandler(BaseHandler):
     def get(self):
-        result = subprocess.Popen('git pull'.split(), stdout=subprocess.PIPE).communicate()[0]
+        result = ''
+        out = subprocess.Popen('git pull'.split(), stdout=subprocess.PIPE)
+        curline = ''
+        while True:
+            curline = out.communicate()[0]
+            if curline == '' and out.poll() is not None:
+                break
+            if curline != '':
+                result += curline
+
         config = Config(get('config.json', default_content='{}'))
         self.render('viewer.html',
                     filename='Pull结果',
-                    content='# Pull 结果\n```\n' + result + '\n```\n[返回首页](/)',
+                    content='# Pull 结果\n```git\n' + result + '\n```\n[返回首页](/)',
                     config=config,
                     quote=quote)
 
