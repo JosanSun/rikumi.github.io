@@ -63,6 +63,7 @@ class GitPullHandler(BaseHandler):
     def get(self):
         result = os.popen('git pull').read()
         config = Config(get('config.json', default_content='{}'))
+        print result
         self.render('viewer.html',
                     filename='Pull结果',
                     content='# Pull 结果\n' + result + '\n[返回首页](/)',
