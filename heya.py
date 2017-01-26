@@ -59,10 +59,17 @@ class BaseHandler(tornado.web.RequestHandler):
         pass
 
 
+class GitPullHandler(BaseHandler):
+    def get(self):
+        os.system('git pull')
+        self.redirect('/')
+
+
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r'/(.*)', ViewerHandler),
+            (r'/pull', GitPullHandler),
             (r'/static', StaticFileHandler, {'path': os.path.join(curr_path, 'static')}),
         ]
         settings = dict(
