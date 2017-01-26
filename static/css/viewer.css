@@ -137,7 +137,7 @@ button, input, textarea {
         background: #fff;
         border-left: 0px;
         border-top: 2px solid #41b883;
-        border-bottom: 2px solid #ececec;
+        border-bottom: 1px solid #dddddd;
         box-shadow: 0 10px 20px rgba(0, 0, 0, .05);
     }
 }
