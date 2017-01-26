@@ -60,6 +60,7 @@ button, input, textarea {
     margin-left: 280px;
     padding: 65px 65px;
     border-left: 2px solid #41b883;
+    min-height: 100%;
 }
 
 #content.loading {
@@ -132,7 +133,6 @@ button, input, textarea {
 
     #content {
         margin: 72px 0 64px 0;
-        min-height: 100%;
         padding: 25px;
         background: #fff;
         border-left: 0px;
