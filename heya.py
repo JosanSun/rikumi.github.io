@@ -66,11 +66,9 @@ class GitPullHandler(BaseHandler):
         result = open('.pulllog').read()
 
         config = Config(get('config.json', default_content='{}'))
-        self.render('viewer.html',
-                    filename='Pull结果',
+        self.render('viewer.html', filename='Pull结果',
                     content='# Pull 结果\n```bash\n' + result + '\n```\n[返回首页](/)',
-                    config=config,
-                    quote=quote)
+                    config=config, quote=quote)
 
 
 class Application(tornado.web.Application):
