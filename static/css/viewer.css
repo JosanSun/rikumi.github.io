@@ -19,10 +19,6 @@ button, input, textarea {
 
 ::selection, ::-webkit-selection {
     background: #41b883;
-}
-
-::selection a, ::-webkit-selection a {
-    background: #41b883;
     color: #ffffff;
 }
 
