@@ -18,8 +18,12 @@ button, input, textarea {
 }
 
 ::selection, ::-webkit-selection {
-    background: #72f7bc;
-    border-radius: 3px;
+    background: #41b883;
+}
+
+::selection a, ::-webkit-selection a {
+    background: #41b883;
+    color: #ffffff;
 }
 
 #sidebar {
