@@ -38,14 +38,14 @@
 <body>
     <div id="sidebar" onselectstart="return false">
         <img class="avatar" ondragstart="return false" src="{{ config.avatar }}">
-        <p class="name">{{ config.nickname }}</p>
-        <p class="profile">{{ config.intro }}</p>
+        <div class="name">{{ config.nickname }}</div>
+        <div class="profile">{{ config.intro }}</div>
 
         {% for item in config.sidebar %}
             <a href="{{ '/' + quote(str(item)) }}"><li>{{ item.split('/')[-1] }}</li></a>
         {% end %}
 
-        <p class="footer">{{ config.footer }}</p>
+        <div class="footer">{{ config.footer }}</div>
     </div>
     <div id="content" class="markdown-body loading">
         {{ content }}
