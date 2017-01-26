@@ -27,6 +27,9 @@
             });
             marked.setOptions({
                 highlight: function (code, lang) {
+                    if (lang == "") {
+                        return hljs.highlightAuto(code).value;
+                    }
                     return hljs.highlightAuto(code, [lang]).value;
                 }
             });
