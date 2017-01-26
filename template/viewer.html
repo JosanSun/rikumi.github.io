@@ -14,7 +14,7 @@
     <style> html, body { margin: 0; padding: 0; } </style>
     <script>
         $("body").ready(function() {
-            var content = $("#content").html().replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+            var content = $("#content").html().replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
             console.log(content);
             marked.setOptions({
                 renderer: new marked.Renderer(),
