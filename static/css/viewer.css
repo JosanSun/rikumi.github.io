@@ -17,6 +17,11 @@ button, input, textarea {
     font-family: inherit;
 }
 
+::selection, ::-webkit-selection {
+    background: #72f7bc;
+    border-radius: 3px;
+}
+
 #sidebar {
     float: left;
     position: fixed;
