@@ -46,7 +46,7 @@
         <div class="profile">{{ config.intro }}</div>
 
         {% for item in config.sidebar %}
-            <a href="{{ '/' + quote(str(item)) }}"><li>{{ item.split('/')[-1] }}</li></a>
+            <a class="link" href="{{ '/' + quote(str(item)) }}"><li>{{ item.split('/')[-1] }}</li></a>
         {% end %}
 
         <div class="footer">{{ config.footer }}</div>

@@ -113,7 +113,7 @@ button, input, textarea {
         vertical-align: middle;
     }
 
-    #sidebar a {
+    #sidebar .link {
         display: none
     }
 
