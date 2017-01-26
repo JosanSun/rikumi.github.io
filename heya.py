@@ -64,7 +64,7 @@ class GitPullHandler(BaseHandler):
     def get(self):
         result = ''
         proc = subprocess.Popen('git pull'.split(), stdout=subprocess.PIPE, bufsize=1)
-        for line in iter(proc.stdout.readline, b''):
+        for line in iter(proc.universal_newlines.readline, b''):
             result += line
         proc.communicate()
 
