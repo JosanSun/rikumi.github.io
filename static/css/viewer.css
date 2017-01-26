@@ -86,7 +86,7 @@ button, input, textarea {
         position: fixed;
         top: 0;
         overflow: hidden;
-        padding: 0 40px;
+        padding: 0 25px;
         z-index: -9999;
         display: inline;
         text-align: left;
@@ -125,7 +125,7 @@ button, input, textarea {
     #content {
         margin: 72px 0 64px 0;
         min-height: 100%;
-        padding: 40px;
+        padding: 25px;
         background: #fff;
     }
 }
