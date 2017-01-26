@@ -77,7 +77,9 @@
 	margin-top:24px;
 	margin-bottom:16px;
 	font-weight:normal;
-	line-height:1.25
+	line-height:1.25;
+	-user-select: none;
+	-webkit-user-select: none;
 }
 .markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link {
 	color:#000;
