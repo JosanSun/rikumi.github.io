@@ -4,6 +4,7 @@ import sys
 import json
 import urllib
 from urllib import quote
+import subprocess
 import tornado.httpserver
 import tornado.ioloop
 import tornado.options
@@ -61,7 +62,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
 class GitPullHandler(BaseHandler):
     def get(self):
-        result = os.popen('git pull').readall()
+        result = subprocess.Popen('git pull'.split(), stdout=subprocess.PIPE).communicate()[0]
         config = Config(get('config.json', default_content='{}'))
         self.render('viewer.html',
                     filename='Pull结果',
