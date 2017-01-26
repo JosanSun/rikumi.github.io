@@ -115,6 +115,11 @@ button, input, textarea {
         width: 100%;
         left: 0;
         text-align: center;
+        padding: 0;
+        height: 64px;
+        line-height: 64px;
+        vertical-align: middle;
+        bottom: 0;
     }
 
     #content {
