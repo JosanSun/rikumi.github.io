@@ -26,8 +26,8 @@
                 smartypants: false
             });
             marked.setOptions({
-                highlight: function (code, lang) {
-                    return hljs.highlight(code, lang).value;
+                highlight: function (code, lang, callback) {
+                    callback(null, hljs.highlight(lang, code, false, false).value);
                 }
             });
             $("#content").html(marked(content));
