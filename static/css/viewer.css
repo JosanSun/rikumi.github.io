@@ -118,7 +118,7 @@ button, input, textarea {
     }
 
     #content {
-        margin: 72px 0 72px 0;
+        margin: 72px 0 64px 0;
         min-height: 100%;
         padding: 40px;
         background: #fff;
