@@ -61,8 +61,9 @@ class BaseHandler(tornado.web.RequestHandler):
 
 class GitPullHandler(BaseHandler):
     def get(self):
-        os.system('git pull')
-        self.redirect('/')
+        result = os.popen('git pull').read()
+        config = Config(get('config.json', default_content='{}'))
+        self.render('viewer.html', filename='Pull结果', content='# Pull 结果\n' + result, config=config, quote=quote)
 
 
 class Application(tornado.web.Application):
