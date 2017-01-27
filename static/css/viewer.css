@@ -168,4 +168,8 @@ button, input, textarea {
         border-bottom: 1px solid #dddddd;
         box-shadow: 0 10px 20px rgba(0, 0, 0, .05);
     }
+
+    #content.menu-on {
+        margin-top: 120px;
+    }
 }

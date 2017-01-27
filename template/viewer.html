@@ -44,7 +44,11 @@
 
         function toggleMenu() {
             menu = !menu;
-            $("#content").css("margin-top", menu ? "120px" : "72px");
+            if (menu) {
+                $("#content").addClass("menu-on");
+            } else {
+                $("#content").removeClass("menu-on");
+            }
         }
     </script>
 </head>
