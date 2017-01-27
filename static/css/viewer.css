@@ -146,6 +146,14 @@ button, input, textarea {
         border-radius: 5px;
     }
 
+    #sidebar .link {
+        display: none;
+    }
+
+    .menu-on #sidebar .link {
+        display: inherit;
+    }
+
     #sidebar .footer {
         width: 100%;
         left: 0;
@@ -171,7 +179,7 @@ button, input, textarea {
         box-shadow: 0 10px 20px rgba(0, 0, 0, .05);
     }
 
-    #content.menu-on {
+    .menu-on #content {
         margin-top: 120px;
     }
 }
