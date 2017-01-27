@@ -147,11 +147,11 @@ button, input, textarea {
     }
 
     #sidebar .link {
-        display: none;
+        opacity: 0;
     }
 
     .menu-on #sidebar .link {
-        display: inherit;
+        opacity: 1;
     }
 
     #sidebar .footer {
