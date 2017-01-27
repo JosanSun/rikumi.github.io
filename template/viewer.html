@@ -54,6 +54,7 @@
         <div class="name">{{ config.nickname }}</div>
         <div class="profile">{{ config.intro }}</div>
         <div class="icon ion-more" onclick="toggleMenu()"></div>
+        <br>
 
         {% for item in config.sidebar %}
             <a class="link" href="{{ '/' + quote(str(item)) }}"><li>{{ item.split('/')[-1] }}</li></a>

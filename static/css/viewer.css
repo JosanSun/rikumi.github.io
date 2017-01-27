@@ -136,8 +136,10 @@ button, input, textarea {
         vertical-align: middle;
     }
 
-    #sidebar .link {
-
+    #sidebar li {
+        padding: 15px 10px;
+        display: inline-block;
+        border-radius: 5px;
     }
 
     #sidebar .footer {
