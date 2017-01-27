@@ -102,6 +102,11 @@ button, input, textarea {
 }
 
 @media screen and (max-width: 800px) {
+
+    body {
+        background: #f7f7f7;
+    }
+
     #sidebar {
         float: none;
         width: 100%;
@@ -132,7 +137,7 @@ button, input, textarea {
     }
 
     #sidebar .link {
-        display: none
+
     }
 
     #sidebar .footer {
