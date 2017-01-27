@@ -39,6 +39,13 @@
             $("#content").html(marked(content));
             $("#content").attr("class", "markdown-body");
         });
+
+        var menu = false;
+
+        function toggleMenu() {
+            menu = !menu;
+            $("#content").css("margin-top", menu ? "120px" : "72px");
+        }
     </script>
 </head>
 <body>
@@ -46,7 +53,7 @@
         <a href="/"><img class="avatar" ondragstart="return false" src="{{ config.avatar }}"></a>
         <div class="name">{{ config.nickname }}</div>
         <div class="profile">{{ config.intro }}</div>
-        <a><div class="icon ion-more" onclick="toggleMenu()"></div></a>
+        <a onclick="toggleMenu()"><div class="icon ion-more" onclick="toggleMenu()"></div></a>
 
         {% for item in config.sidebar %}
             <a class="link" href="{{ '/' + quote(str(item)) }}"><li>{{ item.split('/')[-1] }}</li></a>
