@@ -75,6 +75,8 @@ button, input, textarea {
 #content {
     margin-left: 280px;
     padding: 65px 65px;
+    transition: .25s;
+    -webkit-transition: .25s;
 }
 
 #content.loading {
@@ -165,7 +167,5 @@ button, input, textarea {
         border-top: 2px solid #41b883;
         border-bottom: 1px solid #dddddd;
         box-shadow: 0 10px 20px rgba(0, 0, 0, .05);
-        transition: .25s;
-        -webkit-transition: .25s;
     }
 }
