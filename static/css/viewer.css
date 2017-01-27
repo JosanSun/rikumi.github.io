@@ -31,6 +31,8 @@ button, input, textarea {
     text-align: center;
     line-height: 1em;
     border-right: 2px solid #41b883;
+	-user-select: none;
+	-webkit-user-select: none;
 }
 
 #sidebar div {
