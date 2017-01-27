@@ -1,8 +1,3 @@
-* {
-    transition: .25s;
-    -webkit-transition: .25s;
-}
-
 html, body {
     padding: 0;
     margin: 0;
@@ -48,6 +43,8 @@ button, input, textarea {
     padding: 15px 20px;
     display: block;
     color: #666;
+    transition: .25s;
+    -webkit-transition: .25s;
 }
 
 #sidebar li:hover {
@@ -147,17 +144,14 @@ button, input, textarea {
         padding: 15px 15px 15px 0;
         display: inline-block;
         border-radius: 5px;
+        opacity: 0;
     }
 
     #sidebar li:hover {
         background: none;
     }
 
-    #sidebar .link {
-        opacity: 0;
-    }
-
-    .menu-on #sidebar .link {
+    .menu-on #sidebar li {
         opacity: 1;
     }
 
