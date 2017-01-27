@@ -77,6 +77,7 @@ button, input, textarea {
     padding: 65px 65px;
     transition: .25s;
     -webkit-transition: .25s;
+    margin-top: 0 !important;
 }
 
 #content.loading {
