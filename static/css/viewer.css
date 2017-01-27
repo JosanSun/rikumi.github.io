@@ -1,3 +1,8 @@
+*　{
+    transition: .25s;
+    -webkit-transition: .25s;
+}
+
 html, body {
     padding: 0;
     margin: 0;
@@ -42,8 +47,6 @@ button, input, textarea {
 #sidebar li {
     padding: 15px 20px;
     display: block;
-    -webkit-transition: .25s;
-    transition: .25s;
     color: #666;
 }
 
