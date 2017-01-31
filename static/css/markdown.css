@@ -173,7 +173,9 @@
 	max-width:100%;
 	box-sizing:content-box;
 	background-color:#fff;
-	border-radius: 4px
+	border-radius: 4px;
+	-user-select: none;
+	-webkit-user-select: none;
 }
 .markdown-body img[align=right] {
 	padding-left:20px
