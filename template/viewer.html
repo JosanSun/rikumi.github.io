@@ -46,7 +46,7 @@
         $("body").ready(function() {
             {% if url != '' %}
                 $("#content").html("正在加载文章…");
-                $.get("{{ url }}", pageDidLoad}).fail(function() {
+                $.get("{{ url }}", function(c) {pageDidLoad(c);}}).fail(function() {
                     {% if filename != '404' %}
                         window.location.href = "/404.md";
                     {% else %}
