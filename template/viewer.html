@@ -19,37 +19,45 @@
     <title>{{ filename }}丨{{ config.title }}</title>
     <style> html, body { margin: 0; padding: 0; } </style>
     <script>
-        $("body").ready(function() {
-            $("#content").html("正在加载文章…");
-            $.get("{{ url }}", function(content) {
-                console.log(content);
-                marked.setOptions({
-                    renderer: new marked.Renderer(),
-                    gfm: true,
-                    tables: true,
-                    breaks: false,
-                    pedantic: false,
-                    sanitize: false,
-                    smartLists: false,
-                    smartypants: false
-                });
-                marked.setOptions({
-                    highlight: function (code, lang) {
-                        if (lang == "") {
-                            return hljs.highlightAuto(code).value;
-                        }
-                        return hljs.highlightAuto(code, [lang]).value;
-                    }
-                });
-                $("#content").html(marked(content));
-                $("#content").attr("class", "markdown-body");
-            }).fail(function() {
-                {% if filename != '404' %}
-                    window.location.href = "/404.md";
-                {% else %}
-                    $("#content").html(marked("# 墙太高了…\n似乎无法从 GitHub 获取文章，再试一次？"));
-                {% end %}
+        function pageDidLoad(content) {
+            console.log(content);
+            marked.setOptions({
+                renderer: new marked.Renderer(),
+                gfm: true,
+                tables: true,
+                breaks: false,
+                pedantic: false,
+                sanitize: false,
+                smartLists: false,
+                smartypants: false
             });
+            marked.setOptions({
+                highlight: function (code, lang) {
+                    if (lang == "") {
+                        return hljs.highlightAuto(code).value;
+                    }
+                    return hljs.highlightAuto(code, [lang]).value;
+                }
+            });
+            $("#content").html(marked(content));
+            $("#content").attr("class", "markdown-body");
+        }
+
+        $("body").ready(function() {
+            {% if url is None %}
+                var content = "{{ content.replace('\n', '\\n').replace('\"', '\\"') }}";
+                $("#content").html(marked(content));
+                pageDidLoad(content);
+            {% else %}
+                $("#content").html("正在加载文章…");
+                $.get("{{ url }}", pageDidLoad}).fail(function() {
+                    {% if filename != '404' %}
+                        window.location.href = "/404.md";
+                    {% else %}
+                        $("#content").html(marked("# 墙太高了…\n似乎无法从 GitHub 获取文章，再试一次？"));
+                    {% end %}
+                });
+            {% end %}
         });
 
         var menu = false;
