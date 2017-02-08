@@ -44,11 +44,11 @@
         }
 
         $("body").ready(function() {
-            {% if url is None %}
+            {% try %}
                 var content = "{{ content.replace('\n', '\\n').replace('\"', '\\"') }}";
                 $("#content").html(marked(content));
                 pageDidLoad(content);
-            {% else %}
+            {% except %}
                 $("#content").html("正在加载文章…");
                 $.get("{{ url }}", pageDidLoad}).fail(function() {
                     {% if filename != '404' %}
