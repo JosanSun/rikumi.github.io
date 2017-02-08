@@ -20,28 +20,36 @@
     <style> html, body { margin: 0; padding: 0; } </style>
     <script>
         $("body").ready(function() {
-            var content = $("#content").html().replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
-            console.log(content);
-            marked.setOptions({
-                renderer: new marked.Renderer(),
-                gfm: true,
-                tables: true,
-                breaks: false,
-                pedantic: false,
-                sanitize: false,
-                smartLists: false,
-                smartypants: false
-            });
-            marked.setOptions({
-                highlight: function (code, lang) {
-                    if (lang == "") {
-                        return hljs.highlightAuto(code).value;
+            $("#content").html("正在加载文章…");
+            $.get("{{ url }}", function(content) {
+                console.log(content);
+                marked.setOptions({
+                    renderer: new marked.Renderer(),
+                    gfm: true,
+                    tables: true,
+                    breaks: false,
+                    pedantic: false,
+                    sanitize: false,
+                    smartLists: false,
+                    smartypants: false
+                });
+                marked.setOptions({
+                    highlight: function (code, lang) {
+                        if (lang == "") {
+                            return hljs.highlightAuto(code).value;
+                        }
+                        return hljs.highlightAuto(code, [lang]).value;
                     }
-                    return hljs.highlightAuto(code, [lang]).value;
-                }
+                });
+                $("#content").html(marked(content));
+                $("#content").attr("class", "markdown-body");
+            }).fail(function() {
+                {% if filename != '404' %}
+                    window.location.href = "/404.md";
+                {% else %}
+                    $("#content").html(marked("# 墙太高了…\n似乎无法从 GitHub 获取文章，再试一次？"));
+                {% end %}
             });
-            $("#content").html(marked(content));
-            $("#content").attr("class", "markdown-body");
         });
 
         var menu = false;
@@ -73,8 +81,6 @@
 
         <div class="footer">{{ config.footer }}</div>
     </div>
-    <div id="content" class="markdown-body loading">
-        {{ content }}
-    </div>
+    <div id="content" class="markdown-body loading"></div>
 </body>
 </html>

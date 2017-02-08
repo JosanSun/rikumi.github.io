@@ -94,9 +94,8 @@ class ViewerHandler(BaseHandler):
             filename = config.index
         if not filename.endswith('.md'):
             filename += '.md'
-        file_content = get(filename, default_file='404.md')
 
-        self.render('viewer.html', filename=filename[:-3], content=file_content, config=config, quote=quote)
+        self.render('viewer.html', filename=filename[:-3], url=url(filename), config=config, quote=quote)
 
 
 if __name__ == '__main__':
