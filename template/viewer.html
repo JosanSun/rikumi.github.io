@@ -44,7 +44,7 @@
         }
 
         $("body").ready(function() {
-            {% try %}
+            {% if url != '' %}
                 $("#content").html("正在加载文章…");
                 $.get("{{ url }}", pageDidLoad}).fail(function() {
                     {% if filename != '404' %}
@@ -53,7 +53,7 @@
                         $("#content").html(marked("# 墙太高了…\n似乎无法从 GitHub 获取文章，再试一次？"));
                     {% end %}
                 });
-            {% except %}
+            {% else %}
                 var content = "{{ content.replace('\n', '\\n').replace('\"', '\\"') }}";
                 $("#content").html(marked(content));
                 pageDidLoad(content);

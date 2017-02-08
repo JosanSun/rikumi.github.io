@@ -66,7 +66,7 @@ class GitPullHandler(BaseHandler):
         result = open('.pulllog').read()
 
         config = Config(get('config.json', default_content='{}'))
-        self.render('viewer.html', filename='Pull结果',
+        self.render('viewer.html', filename='Pull结果', url='',
                     content='# Pull 结果\n```bash\n' + result + '\n```\n[返回首页](/)',
                     config=config, quote=quote)
 
@@ -95,7 +95,7 @@ class ViewerHandler(BaseHandler):
         if not filename.endswith('.md'):
             filename += '.md'
 
-        self.render('viewer.html', filename=filename[:-3], url=url(filename), config=config, quote=quote)
+        self.render('viewer.html', filename=filename[:-3], url=url(filename), content='', config=config, quote=quote)
 
 
 if __name__ == '__main__':
