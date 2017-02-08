@@ -13,6 +13,9 @@
     <script src="/static/js/highlight.js"></script>
     <link href="/static/css/highlight.css" rel="stylesheet">
     <link href="/static/css/viewer.css" rel="stylesheet">
+    <script src="/static/js/APlayer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.5.8/APlayer.min.js"></script>
+    <script src="/static/js/cloudmusic.js"></script>
     <title>{{ filename }}丨{{ config.title }}</title>
     <style> html, body { margin: 0; padding: 0; } </style>
     <script>
@@ -64,6 +67,9 @@
         {% for item in config.sidebar %}
             <a class="link" href="{{ '/' + quote(str(item)) }}"><li>{{ item.split('/')[-1] }}</li></a>
         {% end %}
+
+        <iframe src="{{ 'https://music.daoapp.io/iframe?playlist=' + config.playlist + '&autoplay=0&qssl=1' }}"
+                id="player" frameborder="0" scrolling="no"></iframe>
 
         <div class="footer">{{ config.footer }}</div>
     </div>
