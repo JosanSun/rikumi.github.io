@@ -13,9 +13,6 @@
     <script src="/static/js/highlight.js"></script>
     <link href="/static/css/highlight.css" rel="stylesheet">
     <link href="/static/css/viewer.css" rel="stylesheet">
-    <script src="/static/js/APlayer.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.5.8/APlayer.min.js"></script>
-    <script src="/static/js/cloudmusic.js"></script>
     <title>{{ filename }}丨{{ config.title }}</title>
     <style> html, body { margin: 0; padding: 0; } </style>
     <script>
@@ -46,7 +43,7 @@
         $("body").ready(function() {
             {% if url != '' %}
                 $("#content").html("正在加载文章…");
-                $.get("{{ url }}", function(c) {pageDidLoad(c);}}).fail(function() {
+                $.get("{{ url }}", function(c) {pageDidLoad(c);}).fail(function() {
                     {% if filename != '404' %}
                         window.location.href = "/404.md";
                     {% else %}
