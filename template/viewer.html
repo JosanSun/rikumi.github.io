@@ -27,8 +27,6 @@
                 sanitize: false,
                 smartLists: false,
                 smartypants: false
-            });
-            marked.setOptions({
                 highlight: function (code, lang) {
                     if (lang == "") {
                         return hljs.highlightAuto(code).value;
