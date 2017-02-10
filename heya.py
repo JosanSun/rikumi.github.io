@@ -18,7 +18,7 @@ sys.setdefaultencoding('utf8')
 
 
 def url(file_name=''):
-    return 'https://raw.githubusercontent.com/' + quote(str(username)) + '/HeyaData/master/' + quote(str(file_name))
+    return 'https://raw.githubusercontent.com/' + quote(str(username).lower()) + '/HeyaData/master/' + quote(str(file_name))
 
 
 def get(file, default_file='', default_content=''):
