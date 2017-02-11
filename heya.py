@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, abort, redirect, Response, url_for
-from netease import netease_cloud_music
 import os.path
 import json
 import urllib
@@ -28,16 +27,9 @@ def pull():
 
     config = json.loads(requests.get(url('config.json')).text)
 
-    playlist_id = config['playlist']
-
-    playlist_info = netease_cloud_music("playlist", playlist_id, 0)
-    songs_info = playlist_info["songs_info"]
-    title = playlist_info["playlist"]
-
     return render_template('viewer.html', filename='Pull结果', url='',
                            content='# Pull 结果\n```bash\n' + result + '\n```\n[返回首页](/)',
-                           config=config, quote=quote, str=str,
-                           songs_info=songs_info, title=title, v=curr_commit)
+                           config=config, quote=quote, str=str, v=curr_commit)
 
 
 @app.route('/')
@@ -49,16 +41,10 @@ def view(filename=''):
     if not filename.endswith('.md'):
         filename += '.md'
 
-    playlist_id = config['playlist']
-
-    playlist_info = netease_cloud_music("playlist", playlist_id, 0)
-    songs_info = playlist_info["songs_info"]
-    title = playlist_info["playlist"]
-
     return render_template('viewer.html',
                            filename=filename[:-3], url=url(filename), content='', config=config, quote=quote, str=str,
-                           songs_info=songs_info, title=title, v=curr_commit)
+                           v=curr_commit)
 
 
 if __name__ == "__main__":
-    app.run(port=4000, debug=True)
+    app.run(port=4000)
