@@ -2,15 +2,12 @@
 from flask import Flask, render_template, request, abort, redirect, Response, url_for
 from netease import netease_cloud_music
 import os.path
-import sys
 import json
 import urllib
 import requests
-from urllib import quote
+from urllib.parse import quote
 import subprocess
 
-reload(sys)
-sys.setdefaultencoding('utf8')
 app = Flask(__name__)
 
 
