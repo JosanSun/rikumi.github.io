@@ -69,6 +69,7 @@ button, input, textarea {
     position: fixed;
     bottom: 60px;
     background: #f7f7f7;
+    box-shadow: 0 -2px 1px #eaeaea;
 }
 
 #sidebar #player .aplayer-list {
