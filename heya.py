@@ -26,7 +26,7 @@ def pull():
     os.system('git pull >.pulllog 2>.pulllog')
     result = open('.pulllog').read()
 
-    config = json.loads(str(requests.get(url('config.json')).content))
+    config = json.loads(requests.get(url('config.json').text))
 
     playlist_id = config['playlist']
 
@@ -43,7 +43,7 @@ def pull():
 @app.route('/')
 @app.route('/<path:filename>')
 def view(filename=''):
-    config = json.loads(str(requests.get(url('config.json')).content))
+    config = json.loads(requests.get(url('config.json').text))
     if filename == '':
         filename = config['index']
     if not filename.endswith('.md'):
