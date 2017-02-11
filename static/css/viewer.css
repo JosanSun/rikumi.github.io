@@ -28,20 +28,18 @@ button, input, textarea {
     width: 280px;
     height: 100%;
     background: #f7f7f7;
-    text-align: center;
     line-height: 1em;
     border-right: 2px solid #41b883;
 	-user-select: none;
 	-webkit-user-select: none;
-	overflow-x: hidden;
-	overflow-y: auto;
 }
 
-#sidebar div {
+#sidebar .line {
     padding: 5px 0 15px 0;
+    text-align: center;
 }
 
-#sidebar li {
+#sidebar li.line {
     padding: 15px 20px;
     display: block;
     color: #666;
@@ -61,14 +59,20 @@ button, input, textarea {
     font-size: 12px;
     background: #f7f7f7;
     color: #888;
-    box-shadow: 0 0 5px #ccc;
+    box-shadow: 0 0 5px #ddd;
 }
 
 #sidebar #player {
-    width: 100%;
-    height: 380px;
-    margin: 48px 0;
+    width: 280px;
+    margin: 0;
     overflow: hidden;
+    position: fixed;
+    bottom: 60px;
+    background: #f7f7f7;
+}
+
+#sidebar #player .aplayer-list {
+    max-height: 99px;
 }
 
 #sidebar .icon {

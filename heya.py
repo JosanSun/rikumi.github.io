@@ -1,106 +1,67 @@
 # -*- coding: utf-8 -*-
+from flask import Flask, render_template, request, abort, redirect, Response, url_for
+from netease import netease_cloud_music
 import os.path
 import sys
 import json
 import urllib
+import requests
 from urllib import quote
 import subprocess
-import tornado.httpserver
-import tornado.ioloop
-import tornado.options
-import tornado.web
-from tornado.gen import Task
-from tornado.web import StaticFileHandler, RequestHandler
-from tornado.httpclient import HTTPRequest, HTTPClient
 
 reload(sys)
 sys.setdefaultencoding('utf8')
+app = Flask(__name__)
 
 
 def url(file_name=''):
-    return 'https://raw.githubusercontent.com/' + quote(str(username).lower()) + '/HeyaData/master/' + quote(str(file_name))
-
-
-def get(file, default_file='', default_content=''):
-    try:
-        client = HTTPClient()
-        request = HTTPRequest(url(file), method='GET', request_timeout=10)
-        response = client.fetch(request)
-        return response.body
-    except:
-        if default_file == '':
-            return default_content
-        else:
-            try:
-                client = HTTPClient()
-                request = HTTPRequest(url(default_file), method='GET', request_timeout=10)
-                response = client.fetch(request)
-                return response.body
-            except:
-                return default_content
+    return 'https://raw.githubusercontent.com/' + quote(str(username).lower()) + '/HeyaData/master/' + quote(
+        str(file_name))
 
 
 curr_path = os.path.dirname(os.path.abspath(__file__))
 username = str(os.popen('git config --global --get user.name').read()).replace('\n', '')
+curr_commit = str(os.popen('git rev-parse HEAD').read()).replace('\n', '')
 
 
-class Config:
-    def __init__(self, json_data):
-        self.json_data = json.loads(json_data)
+@app.route('/pull')
+def pull():
+    os.system('git pull >.pulllog 2>.pulllog')
+    result = open('.pulllog').read()
 
-    def __getattr__(self, item):
-        try:
-            return self.json_data[item]
-        except KeyError:
-            return ''
+    config = json.loads(requests.get(url('config.json')).content)
 
+    playlist_id = config['playlist']
 
-class BaseHandler(tornado.web.RequestHandler):
-    def data_received(self, chunk):
-        pass
+    playlist_info = netease_cloud_music("playlist", playlist_id, 0)
+    songs_info = playlist_info["songs_info"]
+    title = playlist_info["playlist"]
 
-
-class GitPullHandler(BaseHandler):
-    def get(self):
-        os.system('git pull >.pulllog 2>.pulllog')
-        result = open('.pulllog').read()
-
-        config = Config(get('config.json', default_content='{}'))
-        self.render('viewer.html', filename='Pull结果', url='',
-                    content='# Pull 结果\n```bash\n' + result + '\n```\n[返回首页](/)',
-                    config=config, quote=quote)
+    return render_template('viewer.html', filename='Pull结果', url='',
+                           content='# Pull 结果\n```bash\n' + result + '\n```\n[返回首页](/)',
+                           config=config, quote=quote, str=str,
+                           songs_info=songs_info, title=title, v=curr_commit)
 
 
-class Application(tornado.web.Application):
-    def __init__(self):
-        handlers = [
-            (r'/pull', GitPullHandler),
-            (r'/static', StaticFileHandler, {'path': os.path.join(curr_path, 'static')}),
-            (r'/(.*)', ViewerHandler),
-        ]
-        settings = dict(
-            debug=True,
-            static_path=os.path.join(curr_path, 'static'),
-            template_path=os.path.join(curr_path, 'template'),
-            cookie_secret='365B3932BBBA6182B2D899B494468874',
-        )
-        tornado.web.Application.__init__(self, handlers, **settings)
+@app.route('/')
+@app.route('/<path:filename>')
+def view(filename=''):
+    config = json.loads(requests.get(url('config.json')).content)
+    if filename == '':
+        filename = config['index']
+    if not filename.endswith('.md'):
+        filename += '.md'
+
+    playlist_id = config['playlist']
+
+    playlist_info = netease_cloud_music("playlist", playlist_id, 0)
+    songs_info = playlist_info["songs_info"]
+    title = playlist_info["playlist"]
+
+    return render_template('viewer.html',
+                           filename=filename[:-3], url=url(filename), content='', config=config, quote=quote, str=str,
+                           songs_info=songs_info, title=title, v=curr_commit)
 
 
-class ViewerHandler(BaseHandler):
-    def get(self, filename=''):
-        config = Config(get('config.json', default_content='{}'))
-        if filename == '':
-            filename = config.index
-        if not filename.endswith('.md'):
-            filename += '.md'
-
-        self.render('viewer.html', filename=filename[:-3], url=url(filename), content='', config=config, quote=quote)
-
-
-if __name__ == '__main__':
-    Application().listen(4000)
-    try:
-        tornado.ioloop.IOLoop.instance().start()
-    except:
-        pass
+if __name__ == "__main__":
+    app.run(port=4000)

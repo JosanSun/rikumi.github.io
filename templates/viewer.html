@@ -5,14 +5,24 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link rel="icon" type="image/png" sizes="80x80" href="/static/icons/favicon.png">
+
+    <!-- Fetched scripts -->
     <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
-    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-    <link href="/static/css/normalize.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.5.8/APlayer.min.js"></script>
+
+    <!-- Local scripts -->
     <script src="/static/js/marked.js"></script>
-    <link href="/static/css/markdown.css" rel="stylesheet">
     <script src="/static/js/highlight.js"></script>
-    <link href="/static/css/highlight.css" rel="stylesheet">
-    <link href="/static/css/viewer.css" rel="stylesheet">
+
+    <!-- Fetched stylesheets -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet">
+
+    <!-- Local stylesheets -->
+    <link href="/static/css/markdown.css?v={{ v }}" rel="stylesheet">
+    <link href="/static/css/highlight.css?v={{ v }}" rel="stylesheet">
+    <link href="/static/css/viewer.css?v={{ v }}" rel="stylesheet">
+
     <title>{{ filename }}丨{{ config.title }}</title>
     <style> html, body { margin: 0; padding: 0; } </style>
     <script>
@@ -46,13 +56,13 @@
                         window.location.href = "/404.md";
                     {% else %}
                         $("#content").html(marked("# 墙太高了…\n似乎无法从 GitHub 获取文章，再试一次？"));
-                    {% end %}
+                    {% endif %}
                 });
             {% else %}
                 var content = "{{ content.replace('\n', '\\n').replace('\"', '\\"') }}";
                 $("#content").html(marked(content));
                 pageDidLoad(content);
-            {% end %}
+            {% endif %}
         });
 
         var menu = false;
@@ -69,21 +79,41 @@
 </head>
 <body>
     <div id="sidebar">
-        <a href="/"><img class="avatar" ondragstart="return false" src="{{ config.avatar }}"></a>
-        <div class="name">{{ config.nickname }}</div>
-        <div class="profile">{{ config.intro }}</div>
+        <p class="line"><a href="/"><img class="avatar" ondragstart="return false" src="{{ config['avatar'] }}"></a></p>
+        <div class="line name">{{ config['nickname'] }}</div>
+        <div class="line profile">{{ config['intro'] }}</div>
         <div class="icon ion-more" onclick="toggleMenu()"></div>
         <br>
 
-        {% for item in config.sidebar %}
-            <a class="link" href="{{ '/' + quote(str(item)) }}"><li>{{ item.split('/')[-1] }}</li></a>
-        {% end %}
+        {% for item in config['sidebar'] %}
+            <a class="link" href="{{ '/' + quote(str(item)) }}"><li class="line">{{ item.split('/')[-1] }}</li></a>
+        {% endfor %}
 
-        <iframe src="{{ 'https://music.daoapp.io/iframe?playlist=' + config.playlist + '&autoplay=0&qssl=1' }}"
-                id="player" frameborder="0" scrolling="no"></iframe>
+        <div id="player" class="aplayer"></div>
 
-        <div class="footer">{{ config.footer }}</div>
+        <div class="line footer">{{ config['footer'] }}</div>
     </div>
     <div id="content" class="markdown-body loading"></div>
+    <script>
+        var ap = new APlayer({
+            element: document.getElementById("player"),
+            narrow: false,
+            autoplay: false,
+            showlrc: false,
+            mutex: true,
+            theme: '#615754',
+            music: [
+                {% for song_info in songs_info %}
+                {
+                    title: '{{ song_info["title"] }}',
+                    author: '{{ song_info["artist"] }}',
+                    url: '{{ song_info["url_best"].replace('http://', 'https://') }}',
+                    pic: '{{ song_info["pic_url"].replace('http://', 'https://') }}',
+                    lrc: '{{ song_info["lyric"] }}',
+                },
+                {% endfor %}
+            ]
+        });
+    </script>
 </body>
 </html>
