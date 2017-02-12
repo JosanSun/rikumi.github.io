@@ -88,19 +88,18 @@
             <a class="link" href="{{ '/' + quote(str(item)) }}"><li>{{ item.split('/')[-1] }}</li></a>
         {% endfor %}
 
-        <iframe id="player" src="about:blank"
+        <iframe id="player" src="https://myseu.cn/apcloud/{{ config['playlist'] }}?autoplay=false"
                 width="280" height="189" frameborder="0"></iframe>
 
         <script>
             // 实现自动调整播放器高度
-            $("body").ready(function() {
+            $("body").resize(function() {
                 var t = $("#sidebar li").last().offset().top + 44;
                 var b = $("#sidebar .footer").first().offset().top;
                 var maxHeight = b - t - 60 - 90;
                 var rows = Math.floor(maxHeight / 33);
                 var height = rows * 33 + 90;
                 $("#player").css("height", height);
-                $("#player").attr("src", "https://myseu.cn/apcloud/{{ config['playlist'] }}?autoplay=false");
             });
         </script>
 
