@@ -62,6 +62,8 @@
                 $("#content").html(marked(content));
                 pageDidLoad(content);
             {% endif %}
+
+            // 初始化播放器高度
             $(window).resize();
         });
 
