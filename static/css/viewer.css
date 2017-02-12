@@ -28,18 +28,18 @@ button, input, textarea {
     width: 280px;
     height: 100%;
     background: #f7f7f7;
+    text-align: center;
     line-height: 1em;
     border-right: 2px solid #41b883;
 	-user-select: none;
 	-webkit-user-select: none;
 }
 
-#sidebar .line {
+#sidebar div {
     padding: 5px 0 15px 0;
-    text-align: center;
 }
 
-#sidebar li.line {
+#sidebar li {
     padding: 15px 20px;
     display: block;
     color: #666;
@@ -63,11 +63,12 @@ button, input, textarea {
 }
 
 #sidebar #player {
+    position: fixed;
     width: 280px;
+    left: 0;
+    bottom: 60px;
     margin: 0;
     overflow: hidden;
-    position: fixed;
-    bottom: 60px;
     background: #f7f7f7;
     box-shadow: 0 -2px 1px #eaeaea;
 }
