@@ -60,6 +60,7 @@ button, input, textarea {
     background: #f7f7f7;
     color: #888;
     box-shadow: 0 0 5px #ddd;
+    padding: 5px 0;
 }
 
 #sidebar #player {
