@@ -101,6 +101,9 @@
                 var b = $("#sidebar .footer").first().offset().top;
                 var maxHeight = b - t - 60 - 90;
                 var rows = Math.floor(maxHeight / 33);
+                if (rows > -3 && rows < 0) {
+                    rows = 0;
+                }
                 var height = rows * 33 + 90;
                 $("#player").css("height", height);
             });
