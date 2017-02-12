@@ -93,7 +93,7 @@
 
         <script>
             // 实现自动调整播放器高度
-            $("body").resize(function() {
+            $(window).resize(function() {
                 var t = $("#sidebar li").last().offset().top + 44;
                 var b = $("#sidebar .footer").first().offset().top;
                 var maxHeight = b - t - 60 - 90;
