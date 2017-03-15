@@ -9,7 +9,6 @@ html, body {
 }
 
 a, a:link, a:hover, a:active, a:visited {
-    color: #41b883;
     text-decoration: none;
 }
 
@@ -18,7 +17,6 @@ button, input, textarea {
 }
 
 ::selection, ::-webkit-selection {
-    background: #41b883;
     color: #ffffff;
 }
 
@@ -30,7 +28,6 @@ button, input, textarea {
     background: #f7f7f7;
     text-align: center;
     line-height: 1em;
-    border-right: 2px solid #41b883;
 	-user-select: none;
 	-webkit-user-select: none;
 }
@@ -196,7 +193,6 @@ button, input, textarea {
         padding: 25px;
         background: #fff;
         border-left: 0px;
-        border-top: 2px solid #41b883;
         border-bottom: 1px solid #dddddd;
         box-shadow: 0 10px 20px rgba(0, 0, 0, .05);
         transition: .25s;

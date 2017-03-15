@@ -22,8 +22,24 @@
     <link href="/static/css/highlight.css?v={{ v }}" rel="stylesheet">
     <link href="/static/css/viewer.css?v={{ v }}" rel="stylesheet">
 
-    <title>{{ filename }}丨{{ config.title }}</title>
-    <style> html, body { margin: 0; padding: 0; } </style>
+    <title>{{ filename }}丨{{ config['title'] }}</title>
+    <style>
+        a, a:link, a:hover, a:active, a:visited {
+            color: {{ config['themeColor'] }};
+        }
+        ::selection, ::-webkit-selection {
+            background: {{ config['themeColor'] }};
+        }
+        #sidebar {
+            border-right: 2px solid {{ config['themeColor'] }};
+        }
+        @media screen and (max-width: 800px) {
+            #content {
+                border-top: 2px solid {{ config['themeColor'] }};
+            }
+        }
+    </style>
+
     <script>
         function pageDidLoad(content) {
             console.log(content);
