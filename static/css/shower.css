@@ -1,0 +1,57 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "PingFang SC", "Microsoft YaHei UI";
+    font-size: 14px;
+    color: #333;
+}
+
+a, a:link, a:hover, a:active, a:visited {
+    text-decoration: none;
+}
+
+button, input, textarea {
+    font-family: inherit;
+}
+
+page {
+    box-sizing: border-box;
+    padding: 65px 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+}
+
+::selection, ::-webkit-selection {
+    color: #ffffff;
+}
+
+#content {
+    font-size: 200%;
+}
+
+#content.loading {
+    padding: 65px 65px;
+    color: #bbb;
+    white-space: pre;
+}
+
+@media screen and (max-width: 800px) {
+
+    body {
+        background: #f7f7f7;
+    }
+
+    #content {
+        padding: 25px;
+        background: #fff;
+        border-left: 0px;
+        border-bottom: 1px solid #dddddd;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .05);
+        transition: .25s;
+        -webkit-transition: .25s;
+    }
+}
