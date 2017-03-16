@@ -103,7 +103,6 @@ page {
 
 #content {
     margin-left: 280px;
-    font-size: 170%;
     -webkit-transition: .25s;
 }
 
@@ -132,25 +131,96 @@ page {
     font-size: 14px;
 }
 
-@media screen and (max-width: 1200px) {
+#sidebar {
+    display: none;
+}
 
-    #sidebar {
-        display: none;
+#content {
+    margin-left: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 1600px) {
+
+    page {
+        padding: 0 45px;
     }
 
     #content {
+        font-size: 200%;
         margin-left: 0;
         padding: 0;
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1400px) {
+
+    page {
+        padding: 0 40px;
+    }
+
+    #content {
+        font-size: 180%;
+        margin-left: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+
+    page {
+        padding: 0 35px;
+    }
+
+    #content {
+        font-size: 180%;
+        margin-left: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+
+    page {
+        padding: 0 30px;
+    }
+
+    #content {
+        font-size: 160%;
+        margin-left: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 1000px) {
 
     page {
         padding: 0 25px;
     }
 
     #content {
+        font-size: 140%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    page {
+        padding: 0 20px;
+    }
+
+    #content {
         font-size: 120%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    page {
+        padding: 0 15px;
+    }
+
+    #content {
+        font-size: 100%;
     }
 }
