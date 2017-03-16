@@ -144,7 +144,7 @@ page {
 @media screen and (max-width: 1600px) {
 
     page {
-        padding: 0 45px;
+        padding: 0 90px;
     }
 
     #content {
@@ -157,7 +157,7 @@ page {
 @media screen and (max-width: 1400px) {
 
     page {
-        padding: 0 40px;
+        padding: 0 80px;
     }
 
     #content {
@@ -170,7 +170,7 @@ page {
 @media screen and (max-width: 1200px) {
 
     page {
-        padding: 0 35px;
+        padding: 0 70px;
     }
 
     #content {
@@ -183,7 +183,7 @@ page {
 @media screen and (max-width: 1200px) {
 
     page {
-        padding: 0 30px;
+        padding: 0 60px;
     }
 
     #content {
@@ -196,7 +196,7 @@ page {
 @media screen and (max-width: 1000px) {
 
     page {
-        padding: 0 25px;
+        padding: 0 50px;
     }
 
     #content {
@@ -207,7 +207,7 @@ page {
 @media screen and (max-width: 800px) {
 
     page {
-        padding: 0 20px;
+        padding: 0 40px;
     }
 
     #content {
@@ -218,7 +218,7 @@ page {
 @media screen and (max-width: 600px) {
 
     page {
-        padding: 0 15px;
+        padding: 0 30px;
     }
 
     #content {
