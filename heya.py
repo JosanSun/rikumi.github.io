@@ -32,6 +32,7 @@ def pull():
                            config=config, quote=quote, str=str, v=curr_commit)
 
 
+@app.route('/show/')
 @app.route('/show/<path:filename>')
 def show(filename=''):
     config = json.loads(requests.get(url('config.json')).text)
