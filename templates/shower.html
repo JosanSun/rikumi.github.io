@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -8,6 +8,8 @@
 
     <!-- Fetched scripts -->
     <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/vendors/scrolloverflow.min.js"></script>
 
     <!-- Local scripts -->
     <script src="/static/js/marked.js"></script>
@@ -16,6 +18,7 @@
     <!-- Fetched stylesheets -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.css" rel="stylesheet">
 
     <!-- Local stylesheets -->
     <link href="/static/css/markdown.css?v={{ v }}" rel="stylesheet">
@@ -33,11 +36,6 @@
     </style>
 
     <script>
-        $(window).resize(function() {
-            var height = $("body").first().innerHeight();
-            $("page").css("minHeight", height);
-        });
-
         function pageDidLoad(content) {
             console.log(content);
             marked.setOptions({
@@ -62,8 +60,10 @@
             content = content.replace(/href="\//g, "href=\"/show/");
             $("#content").html(content);
             $("#content").attr("class", "markdown-body");
-
-            $(window).resize();
+            $('#content').fullpage({
+                sectionSelector: "page",
+                scrollOverflow: true
+            });
         }
 
         $("body").ready(function() {
