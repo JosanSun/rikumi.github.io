@@ -59,7 +59,9 @@
                     return hljs.highlightAuto(code, [lang]).value;
                 }
             });
-            $("#content").html(marked(content));
+            content = marked(content);
+            content = content.replace(/href="http/g, "target=\"_blank\" href=\"http");
+            $("#content").html(content);
             $("#content").attr("class", "markdown-body");
         }
 
@@ -75,9 +77,6 @@
                 });
             {% else %}
                 var content = "{{ content.replace('\n', '\\n').replace('\"', '\\"') }}";
-                content = marked(content);
-                content = content.replace(/href="http/g, "target=\"_blank\" href=\"http");
-                $("#content").html(content);
                 pageDidLoad(content);
             {% endif %}
 
