@@ -18,7 +18,7 @@ function pageDidLoad(content) {
     });
 
     // 计算当前页面原始地址
-    var url = window.location.href.replace("/show/", "/");
+    var url = unescape(window.location.href.replace("/show/", "/"));
     var info = "[" + url + "](" + url + ")";
 
     // 将文件开头的大标题(如果有)后面添加页面链接
