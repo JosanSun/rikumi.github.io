@@ -46,6 +46,7 @@ page {
     }
 
     #content {
+        font-size: 140%;
         padding: 25px;
         background: #fff;
         border-left: 0px;
