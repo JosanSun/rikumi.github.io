@@ -148,7 +148,7 @@ page {
     }
 
     #content {
-        font-size: 300%;
+        font-size: 280%;
         margin-left: 0;
         padding: 0;
     }
@@ -161,20 +161,7 @@ page {
     }
 
     #content {
-        font-size: 270%;
-        margin-left: 0;
-        padding: 0;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-
-    page {
-        padding: 0 70px;
-    }
-
-    #content {
-        font-size: 240%;
+        font-size: 260%;
         margin-left: 0;
         padding: 0;
     }
@@ -187,7 +174,7 @@ page {
     }
 
     #content {
-        font-size: 210%;
+        font-size: 240%;
         margin-left: 0;
         padding: 0;
     }
@@ -200,7 +187,7 @@ page {
     }
 
     #content {
-        font-size: 180%;
+        font-size: 210%;
     }
 }
 
@@ -211,7 +198,7 @@ page {
     }
 
     #content {
-        font-size: 150%;
+        font-size: 180%;
     }
 }
 
@@ -222,6 +209,6 @@ page {
     }
 
     #content {
-        font-size: 120%;
+        font-size: 150%;
     }
 }
