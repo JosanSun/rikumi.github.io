@@ -75,7 +75,9 @@
                 });
             {% else %}
                 var content = "{{ content.replace('\n', '\\n').replace('\"', '\\"') }}";
-                $("#content").html(marked(content));
+                content = marked(content);
+                content = content.replace(/href="http/g, "target=\"_blank\" href=\"http");
+                $("#content").html(content);
                 pageDidLoad(content);
             {% endif %}
 
