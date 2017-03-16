@@ -21,6 +21,7 @@ curr_commit = str(os.popen('git rev-parse HEAD').read()).replace('\n', '')
 
 
 @app.route('/pull')
+@app.route('/pull/')
 def pull():
     os.system('git pull >.pulllog 2>.pulllog')
     result = open('.pulllog').read()
