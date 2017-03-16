@@ -52,7 +52,6 @@ function pageDidLoad(content) {
     // 对内容应用分页展示
     $("#content").fullpage({
         scrollingSpeed: 500,
-        scrollBar: true,
         scrollOverflow: true,
         dragAndMove: true,
         scrollOverflowOptions: {
