@@ -63,6 +63,7 @@
             content = content.replace(/href="\//g, "href=\"/show/");
             $("#content").html(content);
             $("#content").attr("class", "markdown-body");
+            $("page").addClass("fp-noscroll");
             $('#content').fullpage({
                 scrollingSpeed: 500,
                 scrollBar: true,
