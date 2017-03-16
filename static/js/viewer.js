@@ -21,7 +21,13 @@ function pageDidLoad(content) {
     var url = decodeURI(window.location.href);
 
     // 排除404页面和pull页面
+    //  ^  ( (\/\/)  |   [^/]  )   +    \/  (404  (\.md)   ?     |    pull  \/   ?   )   $
+    // 开头,( "//"  或者 不是"/" )出现多次,"/",(("404",".md"有或没有)或者("pull","/"有或没有)),结束
     if (!url.match(/^((\/\/)|[^/])+\/(404(\.md)?|pull\/?)$/)) {
+
+        // 匹配域名开头到第一个单斜杠位置，并替换成/show/
+        //  ^        .*         ?    [^\/]  \/ ([^\/]    |   $ )
+        // 开头,零或多个任意字符:非贪心,不是"/","/",(不是"/" 或者 结束)
         var regex = /^.*?[^\/]\/([^\/]|$)/;
         if (url.match(regex)) {
             url = url.replace(regex, "/show/$1");
@@ -30,7 +36,9 @@ function pageDidLoad(content) {
         }
         var info = "[演示当前页面](" + url + ")";
 
-        // 将文件开头的大标题(如果有)后面添加页面演示链接
+        // 将 Markdown 最开头的大标题(如果有)后面添加页面演示链接
+        //  ^   (\#    \s       .*        \r   ?    \n)
+        // 开头,("#",空白字符,零或多个任意字符,CR有或没有,LF)
         content = content.replace(/^(\#\s.*\r?\n)/, "$1" + info + "\n");
     }
 
