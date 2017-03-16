@@ -95,6 +95,7 @@ page {
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
+    text-align: justify;
 }
 
 ::selection, ::-webkit-selection {
