@@ -18,11 +18,21 @@ function pageDidLoad(content) {
     });
 
     // 计算当前页面对应的演示地址
-    var url = decodeURI(window.location.href).replace(/^.*[^\/]\/([^\/])/, "/show/$1");
-    var info = "[演示当前页面](" + url + ")";
+    var url = decodeURI(window.location.href);
 
-    // 将文件开头的大标题(如果有)后面添加页面演示链接
-    content = content.replace(/^(\#\s.*\r?\n)/, "$1" + info + "\n");
+    // 排除404页面和pull页面
+    if (!url.match(/^((\/\/)|[^/])+\/(404(\.md)?|pull\/?)$/)) {
+        var regex = /^.*?[^\/]\/([^\/]|$)/;
+        if (url.match(regex)) {
+            url = url.replace(regex, "/show/$1");
+        } else {
+            url += "/show/"
+        }
+        var info = "[演示当前页面](" + url + ")";
+
+        // 将文件开头的大标题(如果有)后面添加页面演示链接
+        content = content.replace(/^(\#\s.*\r?\n)/, "$1" + info + "\n");
+    }
 
     // 输出处理后的 Markdown 文本
     console.log(content);
