@@ -46,6 +46,7 @@ function pageDidLoad(content) {
     $("#content").html(content);
 
     // 为内容动态应用 Markdown 样式(在此之前不应用 Markdown 样式)
+    $("#content").removeClass("loading");
     $("#content").addClass("markdown-body");
 
     // 对内容应用分页展示
