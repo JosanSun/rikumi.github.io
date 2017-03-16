@@ -95,7 +95,6 @@ page {
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    text-align: justify;
     -user-select: none;
     -webkit-user-select: none;
     cursor: default;
