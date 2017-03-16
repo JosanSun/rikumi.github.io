@@ -58,7 +58,7 @@
                 }
             });
             content = marked(content);
-            content = "<page>" + content.replace(/(<h[1-3r][>\s])/g, "</page><page>$1") + "</page>";
+            content = "<page>" + content.replace(/(<h[1-3][>\s])/g, "</page><page>$1").replace(/<hr>/g, "</page><page>") + "</page>";
             content = content.replace(/<page><\/page>/g, "");
             content = content.replace(/href="\//g, "href=\"/show/");
             $("#content").html(content);
