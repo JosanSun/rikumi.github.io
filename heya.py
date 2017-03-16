@@ -33,6 +33,7 @@ def pull():
                            config=config, quote=quote, str=str, v=curr_commit)
 
 
+@app.route('/show')
 @app.route('/show/')
 @app.route('/show/<path:filename>')
 def show(filename=''):
