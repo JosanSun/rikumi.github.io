@@ -140,7 +140,7 @@ page {
     padding: 0;
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (min-width: 1600px) {
 
     page {
         padding: 0 45px;
@@ -153,7 +153,7 @@ page {
     }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (min-width: 1400px) {
 
     page {
         padding: 0 40px;
@@ -166,7 +166,7 @@ page {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 1200px) {
 
     page {
         padding: 0 35px;
@@ -179,7 +179,7 @@ page {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 1200px) {
 
     page {
         padding: 0 30px;
@@ -192,7 +192,7 @@ page {
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (min-width: 1000px) {
 
     page {
         padding: 0 25px;
@@ -203,7 +203,7 @@ page {
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 800px) {
 
     page {
         padding: 0 20px;
@@ -214,7 +214,7 @@ page {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) {
 
     page {
         padding: 0 15px;
