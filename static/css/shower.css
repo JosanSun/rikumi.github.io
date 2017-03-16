@@ -54,4 +54,13 @@ page {
         transition: .25s;
         -webkit-transition: .25s;
     }
+
+    page {
+        box-sizing: border-box;
+        padding: 25px 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+    }
 }
