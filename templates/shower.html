@@ -33,6 +33,9 @@
         ::selection, ::-webkit-selection {
             background: {{ config['themeColor'] }};
         }
+        #sidebar {
+            border-right: 2px solid {{ config['themeColor'] }};
+        }
     </style>
 
     <script>
@@ -61,6 +64,8 @@
             $("#content").html(content);
             $("#content").attr("class", "markdown-body");
             $('#content').fullpage({
+                scrollingSpeed: 500,
+                scrollBar: true,
                 sectionSelector: "page"
             });
         }
@@ -83,6 +88,37 @@
     </script>
 </head>
 <body>
+    <div id="sidebar">
+        <a href="/"><img class="avatar" ondragstart="return false" src="{{ config['avatar'] }}"></a>
+        <div class="name">{{ config['nickname'] }}</div>
+        <div class="profile">{{ config['intro'] }}</div>
+        <div class="icon ion-more" onclick="toggleMenu()"></div>
+        <br>
+
+        {% for item in config['sidebar'] %}
+            <a class="link" href="{{ '/' + quote(str(item)) }}"><li>{{ item.split('/')[-1] }}</li></a>
+        {% endfor %}
+
+        <iframe id="player" src="https://myseu.cn/apcloud/{{ config['playlist'] }}?autoplay=false"
+                width="280" height="189" frameborder="0"></iframe>
+
+        <script>
+            // 实现自动调整播放器高度，根据侧栏可用空间自动选择隐藏播放器或显示 0、1、2、… 个曲目
+            $(window).resize(function() {
+                var t = $("#sidebar li").last().offset().top + 44;
+                var b = $("#sidebar .footer").first().offset().top;
+                var maxHeight = b - t - 60 - 90;
+                var rows = Math.floor(maxHeight / 33);
+                if (rows > -3 && rows < 0) {
+                    rows = 0;
+                }
+                var height = rows * 33 + 90;
+                $("#player").css("height", height);
+            });
+        </script>
+
+        <div class="footer">{{ config['footer'] }}</div>
+    </div>
     <div id="content" class="markdown-body loading"></div>
 </body>
 </html>
