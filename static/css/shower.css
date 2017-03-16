@@ -149,4 +149,8 @@ page {
     page {
         padding: 0 25px;
     }
+
+    #content {
+        font-size: 120%;
+    }
 }
