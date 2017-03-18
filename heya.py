@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template, request, abort, redirect, Response, url_for
-import os.path
 import json
+import os.path
 import urllib
-import requests
+import urllib.request
+from io import StringIO
 from urllib.parse import quote
-import subprocess
+
+import requests
+from PIL import Image, ImageDraw
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -60,6 +63,57 @@ def view(filename=''):
     return render_template('viewer.html',
                            filename=filename[:-3], url=url(filename), content='', config=config, quote=quote, str=str,
                            v=curr_commit)
+
+
+last_avatar = ''
+last_favicon = ''
+
+
+@app.route('/apple-icon.png')
+def apple_icon():
+    global last_avatar
+
+    config = json.loads(requests.get(url('config.json')).text)
+    pic_url = config['avatar']
+    if pic_url != last_avatar:
+        urllib.request.urlretrieve(pic_url, 'static/.avatar.png')
+        ima = Image.open('static/.avatar.png').convert("RGBA")
+        size = ima.size
+        r2 = 98
+        ima = ima.resize((r2, r2), Image.ANTIALIAS)
+        circle = Image.new('L', (r2, r2), 0)
+        draw = ImageDraw.Draw(circle)
+        draw.ellipse((0, 0, r2, r2), fill=255)
+        ima.putalpha(circle)
+        bg = Image.new('RGBA', (120, 120), 'white')
+        r, g, b, a = ima.split()
+        bg.paste(ima, (11, 11), mask=a)
+        bg.save('static/.apple-icon.png')
+        last_avatar = pic_url
+
+    return app.send_static_file('.apple-icon.png')
+
+
+@app.route('/favicon.png')
+def favicon():
+    global last_favicon
+
+    config = json.loads(requests.get(url('config.json')).text)
+    pic_url = config['avatar']
+    if pic_url != last_favicon:
+        urllib.request.urlretrieve(pic_url, 'static/.avatar.png')
+        ima = Image.open('static/.avatar.png').convert("RGBA")
+        size = ima.size
+        r2 = 96
+        ima = ima.resize((r2, r2), Image.ANTIALIAS)
+        circle = Image.new('L', (r2, r2), 0)
+        draw = ImageDraw.Draw(circle)
+        draw.ellipse((0, 0, r2, r2), fill=255)
+        ima.putalpha(circle)
+        ima.save('static/.favicon.png')
+        last_favicon = pic_url
+
+    return app.send_static_file('.favicon.png')
 
 
 if __name__ == "__main__":
