@@ -79,15 +79,15 @@ def apple_icon():
         urllib.request.urlretrieve(pic_url, 'static/.avatar.png')
         ima = Image.open('static/.avatar.png').convert("RGBA")
         size = ima.size
-        r2 = 98
+        r2 = 100
         ima = ima.resize((r2, r2), Image.ANTIALIAS)
         circle = Image.new('L', (r2, r2), 0)
         draw = ImageDraw.Draw(circle)
-        draw.ellipse((0, 0, r2, r2), fill=255)
+        draw.ellipse((0, 0, r2 - 1, r2 - 1), fill=255)
         ima.putalpha(circle)
         bg = Image.new('RGBA', (120, 120), 'white')
         r, g, b, a = ima.split()
-        bg.paste(ima, (11, 11), mask=a)
+        bg.paste(ima, (10, 10), mask=a)
         bg.save('static/.apple-icon.png')
         last_avatar = pic_url
 
@@ -104,11 +104,11 @@ def favicon():
         urllib.request.urlretrieve(pic_url, 'static/.avatar.png')
         ima = Image.open('static/.avatar.png').convert("RGBA")
         size = ima.size
-        r2 = 96
+        r2 = 100
         ima = ima.resize((r2, r2), Image.ANTIALIAS)
         circle = Image.new('L', (r2, r2), 0)
         draw = ImageDraw.Draw(circle)
-        draw.ellipse((0, 0, r2, r2), fill=255)
+        draw.ellipse((0, 0, r2 - 1, r2 - 1), fill=255)
         ima.putalpha(circle)
         ima.save('static/.favicon.png')
         last_favicon = pic_url
