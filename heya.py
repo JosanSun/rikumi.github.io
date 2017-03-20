@@ -81,9 +81,10 @@ def apple_icon():
         size = ima.size
         r2 = 100
         ima = ima.resize((r2, r2), Image.ANTIALIAS)
-        circle = Image.new('L', (r2, r2), 0)
+        circle = Image.new('L', (r2 * 5, r2 * 5), 0)
         draw = ImageDraw.Draw(circle)
-        draw.ellipse((0, 0, r2 - 1, r2 - 1), fill=255)
+        draw.ellipse((0, 0, r2 * 5 - 1, r2 * 5 - 1), fill=255)
+        circle = circle.resize((r2, r2), Image.ANTIALIAS)
         ima.putalpha(circle)
         bg = Image.new('RGBA', (120, 120), 'white')
         r, g, b, a = ima.split()
@@ -106,9 +107,10 @@ def favicon():
         size = ima.size
         r2 = 100
         ima = ima.resize((r2, r2), Image.ANTIALIAS)
-        circle = Image.new('L', (r2, r2), 0)
+        circle = Image.new('L', (r2 * 5, r2 * 5), 0)
         draw = ImageDraw.Draw(circle)
-        draw.ellipse((0, 0, r2 - 1, r2 - 1), fill=255)
+        draw.ellipse((0, 0, r2 * 5 - 1, r2 * 5 - 1), fill=255)
+        circle = circle.resize((r2, r2), Image.ANTIALIAS)
         ima.putalpha(circle)
         ima.save('static/.favicon.png')
         last_favicon = pic_url
