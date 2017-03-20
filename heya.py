@@ -77,7 +77,7 @@ def apple_icon():
     config = json.loads(requests.get(url('config.json')).text)
     pic_url = config['avatar']
     stamp = int(time.time())
-    if stamp > last_avatar + 300:
+    if stamp > last_avatar + 120:
         # print('Generating new apple icon', stamp)
         urllib.request.urlretrieve(pic_url, 'static/.avatar.png')
         ima = Image.open('static/.avatar.png').convert("RGBA")
@@ -105,7 +105,7 @@ def favicon():
     config = json.loads(requests.get(url('config.json')).text)
     pic_url = config['avatar']
     stamp = int(time.time())
-    if stamp > last_favicon + 300:
+    if stamp > last_favicon + 120:
         # print('Generating new favicon', stamp)
         urllib.request.urlretrieve(pic_url, 'static/.avatar.png')
         ima = Image.open('static/.avatar.png').convert("RGBA")
