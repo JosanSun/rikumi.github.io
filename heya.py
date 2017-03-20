@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 import os.path
+import time
 import urllib
 import urllib.request
 from io import StringIO
@@ -65,8 +66,8 @@ def view(filename=''):
                            v=curr_commit)
 
 
-last_avatar = ''
-last_favicon = ''
+last_avatar = 0
+last_favicon = 0
 
 
 @app.route('/apple-icon.png')
@@ -75,7 +76,9 @@ def apple_icon():
 
     config = json.loads(requests.get(url('config.json')).text)
     pic_url = config['avatar']
-    if pic_url != last_avatar:
+    stamp = int(time.time())
+    if stamp > last_avatar + 300:
+        # print('Generating new apple icon', stamp)
         urllib.request.urlretrieve(pic_url, 'static/.avatar.png')
         ima = Image.open('static/.avatar.png').convert("RGBA")
         size = ima.size
@@ -90,7 +93,7 @@ def apple_icon():
         r, g, b, a = ima.split()
         bg.paste(ima, (10, 10), mask=a)
         bg.save('static/.apple-icon.png')
-        last_avatar = pic_url
+        last_avatar = stamp
 
     return app.send_static_file('.apple-icon.png')
 
@@ -101,7 +104,9 @@ def favicon():
 
     config = json.loads(requests.get(url('config.json')).text)
     pic_url = config['avatar']
-    if pic_url != last_favicon:
+    stamp = int(time.time())
+    if stamp > last_favicon + 300:
+        # print('Generating new favicon', stamp)
         urllib.request.urlretrieve(pic_url, 'static/.avatar.png')
         ima = Image.open('static/.avatar.png').convert("RGBA")
         size = ima.size
@@ -113,10 +118,10 @@ def favicon():
         circle = circle.resize((r2, r2), Image.ANTIALIAS)
         ima.putalpha(circle)
         ima.save('static/.favicon.png')
-        last_favicon = pic_url
+        last_favicon = stamp
 
     return app.send_static_file('.favicon.png')
-
+    
 
 if __name__ == "__main__":
     app.run(port=4000, debug=True)
