@@ -60,4 +60,11 @@ function pageDidLoad(content) {
         },
         sectionSelector: "page"
     });
+
+    $("body").keypress(function( event ) {
+        if (event.which == 66 || event.which == 98) {
+            event.preventDefault();
+            $("body").toggleClass("lights-off");
+        }
+    });
 }
