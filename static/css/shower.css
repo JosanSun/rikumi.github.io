@@ -209,3 +209,32 @@ page {
         font-size: 150%;
     }
 }
+
+page, p, hr, ul, ol, blockquote, h1, h2, h3, h4, h5, h6 {
+    -webkit-transition: .25s;
+}
+
+.lights-off page {
+    background: #000;
+}
+
+.lights-off p,
+.lights-off hr,
+.lights-off ul,
+.lights-off ol,
+.lights-off blockquote {
+    display: none;
+}
+
+.lights-off h1,
+.lights-off h2,
+.lights-off h3,
+.lights-off h4,
+.lights-off h5,
+.lights-off h6 {
+    display: block;
+    border: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 300%;
+}

@@ -268,7 +268,7 @@
 	padding-top:0.1em;
 	padding-bottom:0.2em;
 	margin:0 2.5px;
-	background-color:#f7f7f7;
+	background-color: rgba(0, 0, 0, .05);
 	border-radius:3px
 }
 .markdown-body code::before,.markdown-body code::after,.markdown-body tt::before,.markdown-body tt::after {
@@ -320,7 +320,7 @@
 	overflow:auto;
 	font-size:95%;
 	line-height:1.45;
-	background-color:#f7f7f7;
+	background-color: rgba(0, 0, 0, .05);
 	border-radius:3px
 }
 .markdown-body pre code,.markdown-body pre tt {
