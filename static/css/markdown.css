@@ -323,6 +323,9 @@
 	background-color: rgba(0, 0, 0, .05);
 	border-radius:3px
 }
+.markdown-body pre {
+	background-color: #f7f7f7;
+}
 .markdown-body pre code,.markdown-body pre tt {
 	display:inline;
 	max-width:auto;
