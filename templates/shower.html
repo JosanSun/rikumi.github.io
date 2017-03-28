@@ -91,6 +91,13 @@
                 var height = rows * 33 + 90;
                 $("#player").css("height", height);
             });
+
+            $("body").keypress(function( event ) {
+                if ( event.which == 66 || event.which == 98 ) {
+                    event.preventDefault();
+                    $("body").toggleClass("lights-out");
+                }
+            });
         </script>
 
         <div class="footer">{{ config['footer'] }}</div>
