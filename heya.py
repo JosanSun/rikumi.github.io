@@ -86,12 +86,11 @@ def apple_icon():
         ima = ima.resize((r2, r2), Image.ANTIALIAS)
         circle = Image.new('L', (r2 * 5, r2 * 5), 0)
         draw = ImageDraw.Draw(circle)
-        draw.ellipse((0, 0, r2 * 5 - 1, r2 * 5 - 1), fill=255)
+        draw.ellipse((1, 1, r2 * 5 - 2, r2 * 5 - 2), fill=255)
         circle = circle.resize((r2, r2), Image.ANTIALIAS)
-        ima.putalpha(circle)
         bg = Image.new('RGBA', (120, 120), 'white')
         r, g, b, a = ima.split()
-        bg.paste(ima, (10, 10), mask=a)
+        bg.paste(ima, (10, 10), mask=circle)
         bg.save('static/.apple-icon.png')
         last_avatar = stamp
 
@@ -114,7 +113,7 @@ def favicon():
         ima = ima.resize((r2, r2), Image.ANTIALIAS)
         circle = Image.new('L', (r2 * 5, r2 * 5), 0)
         draw = ImageDraw.Draw(circle)
-        draw.ellipse((0, 0, r2 * 5 - 1, r2 * 5 - 1), fill=255)
+        draw.ellipse((1, 1, r2 * 5 - 2, r2 * 5 - 2), fill=255)
         circle = circle.resize((r2, r2), Image.ANTIALIAS)
         ima.putalpha(circle)
         ima.save('static/.favicon.png')
