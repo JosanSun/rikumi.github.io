@@ -281,11 +281,12 @@
 .markdown-body del {
     background: #333;
     border-radius: 3px;
-    margin: 0 5px;
+    margin: 0 2px;
     -transition: .25s;
     -webkit-transition: .25s;
     -moz-transition: .25s;
-    -o-transition: .25s
+    -o-transition: .25s;
+    cursor: pointer
 }
 .markdown-body del:hover,
 .markdown-body del:focus,
