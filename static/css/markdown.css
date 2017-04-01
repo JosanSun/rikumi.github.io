@@ -287,7 +287,9 @@
     -moz-transition: .25s;
     -o-transition: .25s
 }
-.markdown-body del:hover {
+.markdown-body del:hover,
+.markdown-body del:focus,
+.markdown-body del:active {
     background: none
     margin: 0;
 }
