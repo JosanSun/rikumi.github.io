@@ -51,7 +51,7 @@ function pageDidLoad(content) {
 
     // 修复 del 元素无法在 iOS 端触发 :hover 的问题
     // http://stackoverflow.com/questions/18047353/fix-css-hover-on-iphone-ipad-ipod
-    $("del").attr("onclick", "");
+    $("del").attr("onclick", "void(0)");
 
     // 对内容应用分页展示
     $("#content").fullpage({

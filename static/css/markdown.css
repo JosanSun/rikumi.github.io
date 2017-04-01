@@ -290,7 +290,7 @@
 .markdown-body del:hover,
 .markdown-body del:focus,
 .markdown-body del:active {
-    background: none
+    background: none;
     margin: 0;
 }
 .markdown-body del code {
