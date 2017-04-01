@@ -285,8 +285,7 @@
     -transition: .25s;
     -webkit-transition: .25s;
     -moz-transition: .25s;
-    -o-transition: .25s;
-    cursor: pointer
+    -o-transition: .25s
 }
 .markdown-body del:hover,
 .markdown-body del:focus,

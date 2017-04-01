@@ -57,6 +57,10 @@ function pageDidLoad(content) {
     // 为内容动态应用 Markdown 样式(在此之前不应用 Markdown 样式)
     $("#content").removeClass("loading");
     $("#content").addClass("markdown-body");
+
+    // 修复 del 元素无法在 iOS 端触发 :hover 的问题
+    // http://stackoverflow.com/questions/18047353/fix-css-hover-on-iphone-ipad-ipod
+    $("del").attr("onclick", "");
 }
 
 var menu = false;
