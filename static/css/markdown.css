@@ -40,16 +40,17 @@
 	margin-bottom:16px
 }
 .markdown-body hr {
-	height:0.25em;
-	padding:0;
-	margin:24px 0;
-	background-color:#e7e7e7;
-	border:0
+    height: 1px;
+    margin: 15px 0;
+    border: 0;
+    background: rgba(0, 0, 0, .05);
 }
 .markdown-body blockquote {
-	padding:0 1em;
-	color:#777;
-	border-left:0.25em solid #ddd
+	padding: 0 1em;
+    color: #777;
+    border-left: 0.25em solid #f5f5f5;
+    margin-left: 0;
+    margin-right: 0;
 }
 .markdown-body blockquote>:first-child {
 	margin-top:0
