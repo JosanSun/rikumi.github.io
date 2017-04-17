@@ -39,7 +39,7 @@ function pageDidLoad(content) {
         // 将 Markdown 最开头的大标题(如果有)后面添加页面演示链接
         //  ^   (\#    \s       .*        \r   ?    \n)
         // 开头,("#",空白字符,零或多个任意字符,CR有或没有,LF)
-        content = content.replace(/^(\#\s.*\r?\n)/, "$1" + info + "\n");
+        content = content.replace(/^(\#\s.*\r?\n)/, "$1" + info + "\n\n");
     }
 
     // 输出处理后的 Markdown 文本

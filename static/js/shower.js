@@ -22,7 +22,7 @@ function pageDidLoad(content) {
     var info = "[" + url + "](" + url + ")";
 
     // 将文件开头的大标题(如果有)后面添加页面链接
-    content = content.replace(/^(\#\s.*\r?\n)/, "$1" + info + "\n");
+    content = content.replace(/^(\#\s.*\r?\n)/, "$1" + info + "\n\n");
 
     // 输出处理后的 Markdown 文本
     console.log(content);
