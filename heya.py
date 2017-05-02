@@ -37,33 +37,10 @@ def pull():
                            config=config, quote=quote, str=str, v=curr_commit)
 
 
-@app.route('/show')
-@app.route('/show/')
-@app.route('/show/<path:filename>')
-def show(filename=''):
-    config = json.loads(requests.get(url('config.json')).text)
-    if filename == '':
-        filename = config['index']
-    if not filename.endswith('.md'):
-        filename += '.md'
-
-    return render_template('shower.html',
-                           filename=filename[:-3], url=url(filename), content='', config=config, quote=quote, str=str,
-                           v=curr_commit)
-
-
 @app.route('/')
 @app.route('/<path:filename>')
-def view(filename=''):
-    config = json.loads(requests.get(url('config.json')).text)
-    if filename == '':
-        filename = config['index']
-    if not filename.endswith('.md'):
-        filename += '.md'
-
-    return render_template('viewer.html',
-                           filename=filename[:-3], url=url(filename), content='', config=config, quote=quote, str=str,
-                           v=curr_commit)
+def view():
+    return render_template('main.html')
 
 
 last_avatar = 0
