@@ -48,7 +48,7 @@
     <script>
         $("body").ready(function() {
             {% if url != '' %}
-                $("#content").html("正在加载文章…");
+                $("#content").html("正在从GitHub获取文章…");
                 $.get("{{ url }}", function(c) {pageDidLoad(c);}).fail(function() {
                     {% if filename != '404' %}
                         window.location.href = "/404.md";
