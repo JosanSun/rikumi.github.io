@@ -64,10 +64,11 @@
 
         <div class="footer">Proudly designed &amp; developed by Riku</div>
     </div>
-    <div id="app" class="markdown-body loading"></div>
+    <div class="markdown-body">
+        <div id="app"></div>
+    </div>
     <script>
-        $('#app').ready(function() {
-            docute.init({
+        docute.init({
             url: 'https://raw.githubusercontent.com/vhyme/RIKUheya/master/',
             home: 'https://raw.githubusercontent.com/vhyme/RIKUheya/master/首页.md',
             sidebar: false,
@@ -87,7 +88,6 @@
                     return hljs.highlightAuto(code, [lang]).value
                 }
             }
-          })
         })
     </script>
 </body>
