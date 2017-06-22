@@ -27,10 +27,11 @@
 	color:#c00
 }
 .markdown-body .anchor {
-	float:left;
+	/*float:left;
 	padding-right:4px;
 	margin-left:-20px;
-	line-height:1
+	line-height:1*/
+	display: none;
 }
 .markdown-body .anchor:focus {
 	outline:none
@@ -172,7 +173,7 @@
 	background-color:#f8f8f8
 }
 .markdown-body img {
-	max-width:70%;
+	max-width:100%;
 	box-sizing:content-box;
 	background-color:#fff;
 	border-radius: 4px;
