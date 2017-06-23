@@ -218,8 +218,6 @@ header {
         border-left: 0px;
         border-bottom: 1px solid #dddddd;
         box-shadow: 0 10px 20px rgba(0, 0, 0, .05);
-        transition: .25s;
-        -webkit-transition: .25s;
     }
 
     .menu-on #app {

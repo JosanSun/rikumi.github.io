@@ -42,6 +42,20 @@
   right: 15px;
 }
 
+@media screen and (max-width: 800px) {
+  #nprogress .spinner {
+    top: 89px;
+  }
+
+  #nprogress .bar {
+    display: none;
+  }
+
+  .menu-on #nprogress .spinner {
+    top: 137px;
+  }
+}
+
 #nprogress .spinner-icon {
   width: 18px;
   height: 18px;
