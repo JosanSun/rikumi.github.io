@@ -90,6 +90,12 @@
                 }
             }
         })
+
+        docute.router.afterEach(function (to) {
+            setTimeout(function() {
+                $('html,body').animate({scrollTop: '0px'}, 500);
+            })
+        });
     </script>
 </body>
 </html>
