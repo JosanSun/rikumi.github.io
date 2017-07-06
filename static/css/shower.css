@@ -142,7 +142,15 @@ header {
     display: none;
 }
 
+.mobile-only {
+    display: none;
+}
+
 @media screen and (max-width: 800px) {
+
+    .mobile-only {
+        display: initial;
+    }
 
     body {
         background: #f7f7f7;
