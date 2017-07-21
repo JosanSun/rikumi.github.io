@@ -41,33 +41,58 @@
         <script>
             // 实现自动调整播放器高度，根据侧栏可用空间自动选择隐藏播放器或显示 0、1、2、… 个曲目
             $(window).resize(function() {
-                var t = $("#sidebar li").last().offset().top + 44;
-                var b = $("#sidebar .footer").first().offset().top;
-                var maxHeight = b - t - 60 - 90;
-                var rows = Math.floor(maxHeight / 33);
+                var t = $("#sidebar li").last().offset().top + 44
+                var b = $("#sidebar .footer").first().offset().top
+                var maxHeight = b - t - 60 - 90
+                var rows = Math.floor(maxHeight / 33)
                 if (rows > -3 && rows < 0) {
-                    rows = 0;
+                    rows = 0
                 }
-                var height = rows * 33 + 90;
-                $("#player").css("height", height);
-            });
+                var height = rows * 33 + 90
+                $("#player").css("height", height)
+            })
 
-            var menu = false;
+            var menu = false
 
             function toggleMenu() {
-                menu = !menu;
+                menu = !menu
                 if (menu) {
-                    $("body").addClass("menu-on");
+                    $("body").addClass("menu-on")
                 } else {
-                    $("body").removeClass("menu-on");
+                    $("body").removeClass("menu-on")
                 }
             }
         </script>
 
         <div class="footer">Proudly designed &amp; developed by Riku</div>
     </div>
-    <div id="app" class="markdown-body"></div>
+    <div id="main">
+        <div id="app" class="markdown-body"></div>
+        <div id="disqus_thread"></div>
+    </div>
     <script>
+        var disqus_developer = 1
+    
+        function disqus_config() {
+            this.page.url = window.location.href
+            this.page.identifier = window.location.hash.replace(/^#/g, "")
+            console.log(this.page)
+        };
+
+        function loadDisqus(){
+            if (typeof DISQUS === 'object') {
+                DISQUS.reset({
+                    reload: true,
+                    config: disqus_config
+                })
+            } else {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//rikuheya.disqus.com/embed.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }
+        };
+
         docute.init({
             url: 'https://raw.githubusercontent.com/vhyme/RIKUheya/master/',
             home: 'https://raw.githubusercontent.com/vhyme/RIKUheya/master/首页.md',
@@ -91,11 +116,15 @@
             }
         })
 
+        $(loadDisqus)
+
         docute.router.afterEach(function (to) {
             setTimeout(function() {
-                $('html,body').animate({scrollTop: '0px'}, 500);
+                $('html,body').animate({scrollTop: '0px'}, 500)
+
+                loadDisqus()
             })
-        });
+        })
     </script>
 </body>
 </html>

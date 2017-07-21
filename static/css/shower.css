@@ -21,7 +21,7 @@ img.moe {
 }
 
 @media screen and (max-width: 800px) {
-    #app {
+    #main {
         border-top: 2px solid #a075b3;
     }
     img.moe {
@@ -122,12 +122,12 @@ button, input, textarea {
     display: none;
 }
 
-#app {
+#main {
     margin-left: 280px;
     padding: 65px 65px;
 }
 
-#app.loading {
+#main.loading {
     color: #bbb;
     white-space: pre;
 }
@@ -158,6 +158,10 @@ header {
 
 .mobile-only {
     display: none;
+}
+
+#disqus_thread {
+    padding-top: 40px;
 }
 
 @media screen and (max-width: 800px) {
@@ -233,7 +237,7 @@ header {
         display: inherit;
     }
 
-    #app {
+    #main {
         margin: 72px 0 64px 0;
         padding: 25px;
         background: #fff;
@@ -242,7 +246,7 @@ header {
         box-shadow: 0 10px 20px rgba(0, 0, 0, .05);
     }
 
-    .menu-on #app {
+    .menu-on #main {
         margin-top: 120px;
     }
 }
