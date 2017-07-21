@@ -164,6 +164,29 @@ header {
     padding-top: 40px;
 }
 
+.not-found .message {
+    display: none;
+}
+
+.not-found::before {
+    content: "404";
+    display: block;
+    color: #333;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 20px;
+    font-weight: lighter;
+}
+
+.not-found::after {
+    content: "不存在的";
+    display: block;
+    color: #333;
+    font-size: 22px;
+    text-align: center;
+    padding-bottom: 80px;
+}
+
 @media screen and (max-width: 800px) {
 
     .mobile-only {
