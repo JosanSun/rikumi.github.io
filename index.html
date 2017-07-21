@@ -71,11 +71,22 @@
         <div id="disqus_thread"></div>
     </div>
     <script>
+        String.prototype.hashCode = function() {
+            var hash = 0, i, chr
+            if (this.length === 0) return hash
+            for (i = 0; i < this.length; i++) {
+                chr = this.charCodeAt(i)
+                hash = ((hash << 5) - hash) + chr
+                hash |= 0
+            }
+            return hash
+        };
+
         var disqus_developer = 1
     
         function disqus_config() {
-            this.page.url = window.location.href
-            this.page.identifier = window.location.hash.replace(/^#/g, "")
+            this.page.url = window.location.hash.replace(/^#/g, "").hashCode
+            this.page.identifier = window.location.hash.replace(/^#/g, "").hashCode
             console.log(this.page)
         };
 
