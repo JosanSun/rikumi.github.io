@@ -16,7 +16,6 @@ img.moe {
     bottom: 0;
     background-color: transparent;
     opacity: .2;
-    /*z-index: -1;*/
     pointer-events: none;
 }
 
@@ -185,6 +184,21 @@ header {
     font-size: 22px;
     text-align: center;
     padding-bottom: 80px;
+}
+
+@media screen and (min-width: 1400px) {
+
+    #app {
+        margin-right: 360px;
+    }
+
+    #disqus_thread {
+        position: fixed;
+        right: 60px;
+        top: 20px;
+        bottom: 0;
+        width: 320px;
+    }
 }
 
 @media screen and (max-width: 800px) {

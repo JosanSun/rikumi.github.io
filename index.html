@@ -48,6 +48,9 @@
                 if (rows > -3 && rows < 0) {
                     rows = 0
                 }
+                if (rows > 8) {
+                    rows = 8
+                }
                 var height = rows * 33 + 90
                 $("#player").css("height", height)
             })
