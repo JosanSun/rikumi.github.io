@@ -161,6 +161,8 @@ header {
 
 #disqus_thread {
     padding-top: 40px;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .not-found .message {
