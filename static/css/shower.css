@@ -207,7 +207,7 @@ header {
 @media screen and (min-width: 1800px) {
 
     #app {
-        margin-right: 540px;
+        margin-right: 480px;
     }
 
     #disqus_thread {
@@ -215,7 +215,7 @@ header {
         right: 0;
         top: 0;
         bottom: 0;
-        width: 500px;
+        width: 440px;
         padding: 60px 80px 50px 0;
         margin-right: -20px;
         overflow: scroll;
