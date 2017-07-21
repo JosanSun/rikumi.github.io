@@ -85,7 +85,7 @@
         var disqus_developer = 1
     
         function disqus_config() {
-            this.page.url = window.location.hash.replace(/^#/g, "").hashCode
+            this.page.url = window.location.href.replace(/\/#/g, "")
             this.page.identifier = window.location.hash.replace(/^#/g, "").hashCode
             console.log(this.page)
         };
