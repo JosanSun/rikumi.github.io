@@ -209,7 +209,7 @@ header {
         box-shadow: 0 10px 20px rgba(0, 0, 0, .05);
     }
 
-    .menu-on #main {
-        margin-top: 120px;
+    #nprogress .bar {
+        display: none;
     }
 }
