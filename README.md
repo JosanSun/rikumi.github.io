@@ -3,7 +3,7 @@
 欢迎光临 RIKUheya，这里是我的小站。
 <img width="390" height="456" src="http://static.myseu.cn/2017-07-07-sizuru.png" class="moe">
 
-## 侧栏换新衣啦~
+## ← 侧栏换新衣啦~
 
 经过又一上午的不务正业，把侧栏换了个样式，灵感来自[哔哩萌](https://www.bilimoe.com/#blog)，同时播放器继续在[APlayer](https://aplayer.js.org/)的基础上魔改，感谢漏气网红DIYGay提供轮子。
 
