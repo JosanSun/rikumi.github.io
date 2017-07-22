@@ -29,7 +29,6 @@
         <a href="/" router-link="/""><img class="avatar" ondragstart="return false" src="https://avatars1.githubusercontent.com/u/5051300"></a>
         <div class="name">Riku</div>
         <div class="profile">「右手携带左手爱」</div>
-        <div class="more-icon" onclick="toggleMenu()"></div>
         <br>
 
         <a class="link" href="/" router-link="/"><li>首页</li></a>
@@ -56,58 +55,14 @@
                 var height = rows * 33 + 89
                 $("#player").css("height", height)
             })
-
-            var menu = false
-
-            function toggleMenu() {
-                menu = !menu
-                if (menu) {
-                    $("body").addClass("menu-on")
-                } else {
-                    $("body").removeClass("menu-on")
-                }
-            }
         </script>
 
         <div class="footer"></div>
     </div>
     <div id="main">
         <div id="app" class="markdown-body"></div>
-        <div id="disqus_thread"></div>
     </div>
     <script>
-        String.prototype.hashCode = function() {
-            var hash = 0, i, chr
-            if (this.length === 0) return hash
-            for (i = 0; i < this.length; i++) {
-                chr = this.charCodeAt(i)
-                hash = ((hash << 5) - hash) + chr
-                hash |= 0
-            }
-            return hash
-        };
-
-        var disqus_developer = 1
-    
-        function disqus_config() {
-            this.page.url = window.location.href.replace(/\/#/g, "")
-            this.page.identifier = window.location.hash.replace(/^#/g, "")
-        };
-
-        function loadDisqus(){
-            if (typeof DISQUS === 'object') {
-                DISQUS.reset({
-                    reload: true,
-                    config: disqus_config
-                })
-            } else {
-                var s = document.createElement('script'); s.async = true;
-                s.type = 'text/javascript';
-                s.src = '//rikuheya.disqus.com/embed.js';
-                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-            }
-        };
-
         docute.init({
             url: 'https://raw.githubusercontent.com/vhyme/RIKUheya/master/',
             home: 'https://raw.githubusercontent.com/vhyme/RIKUheya/master/README.md',
@@ -131,13 +86,9 @@
             }
         })
 
-        $(loadDisqus)
-
         docute.router.afterEach(function (to) {
             setTimeout(function() {
                 $('html,body').animate({scrollTop: '0px'}, 500)
-
-                loadDisqus()
             })
         })
     </script>

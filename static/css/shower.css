@@ -110,28 +110,6 @@ button, input, textarea {
     max-height: 99px;
 }
 
-#sidebar .more-icon {
-    position: fixed;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAABACAYAAABFqxrgAAACD0lEQVR4Xu1Y7VHDMBSTJoAN6Aa0EwATABMAE0AnoEwAI5QNygTABHQE2IBO8DilTa/0I3EcyuWHfNe7/nAUR5b0nk14gOYAJkEisBJMwjwMrASTYCUsC6PtYDvYDrbDaqfsTHAmOBOcCc6EtfsDB6OD0cHoYHQwOhg3r5ZdHbZVh4joAbgHcApA/zU+AbwBeCCp/9mji/i/lBARTwBua75Qc0TGd1MmUvFJDptia34ufkFCRBwCeAXQT3z5FMBZKhFdxy9JGAO4SiSgnDYheZnyTETk4I9J3vwHPiNCu/+R8rItc6QGZcXO0RJ/QFKqq8JXdknFOaPAFwk5u1S+8Jnkdc0iO48vErSTJzk0ApiSHNSQ0Ab/naR2ukoJUspx5voLfJGglD/IBAHJyl4jIiIXW8/9B75IUN0/ylzojKQqS9VO7Ru/zSZ+keyJhAmA80wSUuS6bzu0wX8heSESRosOMYcHNU16vkoJnccXCWqNFS5Nc2Gm1jqhhLXB79e16S3XX+CXzdIdgMeGUhiSVAtdOyKi0/jLZG+YDYWXar9+ZUKX8dcPUNoxeXiXNWSBUaoC1klaKKJz+Bs1fuExdYFqp8sDlTJDP/Xzf3GU7hS+L1V85T43rJVgEqyEZfGyHWwH28F2WO1mnQnOBGeCM8GZsHbGdzA6GB2MDkYHo4Nx847c1cHVwdXB1WE1GX4A+HsDUC5PB00AAAAASUVORK5CYII=);
-    background-size: contain;
-    background-repeat: no-repeat;
-    right: 24px;
-    top: 24px;
-    width: 24px;
-    height: 24px;
-    line-height: 32px;
-    opacity: .5;
-    display: none;
-}
-
-#sidebar .more-icon:hover {
-    opacity: .7;
-}
-
-#sidebar .more-icon:active {
-    opacity: .3;
-}
-
 #main {
     margin-left: 360px;
     padding: 65px 65px;
@@ -172,12 +150,6 @@ header {
     display: none;
 }
 
-#disqus_thread {
-    padding-top: 40px;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
 .not-found .message {
     display: none;
 }
@@ -206,42 +178,6 @@ header {
     left: 320px;
     right: 0;
     width: auto;
-}
-
-@media screen and (min-width: 1400px) {
-
-    #app {
-        margin-right: 360px;
-    }
-
-    #disqus_thread {
-        position: fixed;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 320px;
-        padding: 60px 80px 50px 0;
-        margin-right: -20px;
-        overflow: scroll;
-    }
-}
-
-@media screen and (min-width: 1800px) {
-
-    #app {
-        margin-right: 480px;
-    }
-
-    #disqus_thread {
-        position: fixed;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 440px;
-        padding: 60px 80px 50px 0;
-        margin-right: -20px;
-        overflow: scroll;
-    }
 }
 
 @media screen and (max-width: 800px) {
