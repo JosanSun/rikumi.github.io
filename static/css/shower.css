@@ -121,7 +121,7 @@ button, input, textarea {
     white-space: pre;
 }
 
-.avatar {
+#sidebar .avatar {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -130,15 +130,17 @@ button, input, textarea {
     background: #f0f0f0;
 }
 
-.name {
+#sidebar .name {
     margin-top: 30px;
     font-size: 20px;
     color: rgba(255, 255, 255, .8);
 }
 
-.profile {
+#sidebar .profile {
     color: rgba(255, 255, 255, .6);
     font-size: 14px;
+    display: inline;
+    line-height: 44px;
 }
 
 figure.sidebar,
