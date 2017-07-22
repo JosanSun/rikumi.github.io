@@ -60,7 +60,7 @@ button, input, textarea {
     line-height: 1em;
     -user-select: none;
     -webkit-user-select: none;
-    background: url(/static/bg.jpg) 50% 50%;
+    background: #000 url(/static/bg.jpg) 50% 50%;
     background-size: cover;
 }
 
