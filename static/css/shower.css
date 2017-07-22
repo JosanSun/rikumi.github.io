@@ -54,7 +54,7 @@ button, input, textarea {
 #sidebar {
     float: left;
     position: fixed;
-    width: 320px;
+    width: 360px;
     height: 100%;
     text-align: center;
     line-height: 1em;
@@ -95,8 +95,8 @@ button, input, textarea {
 
 #sidebar #player {
     position: fixed;
-    width: 280px;
-    left: 20px;
+    width: 300px;
+    left: 30px;
     bottom: 30px;
     height: 90px;
     margin: 0;
@@ -127,7 +127,7 @@ button, input, textarea {
 }
 
 #main {
-    margin-left: 320px;
+    margin-left: 360px;
     padding: 65px 65px;
 }
 

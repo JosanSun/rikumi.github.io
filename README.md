@@ -5,7 +5,7 @@
 
 ## ← 侧栏换新衣啦~
 
-经过又一上午的不务正业，把侧栏换了个样式，灵感来自[哔哩萌](https://www.bilimoe.com/#blog)，同时播放器继续在[APlayer](https://aplayer.js.org/)的基础上魔改，感谢漏气网红DIYGay提供轮子。
+经过又一整天的不务正业，把侧栏换了个样式，灵感来自[哔哩萌](https://www.bilimoe.com/#blog)，同时播放器继续在[APlayer](https://aplayer.js.org/)的基础上魔改，感谢漏气网红DIYGay提供轮子。
 
 ## 本站正式接入 Disqus 评论框
 
