@@ -54,13 +54,14 @@ button, input, textarea {
 #sidebar {
     float: left;
     position: fixed;
-    width: 280px;
+    width: 320px;
     height: 100%;
-    background: #f7f7f7;
     text-align: center;
     line-height: 1em;
     -user-select: none;
     -webkit-user-select: none;
+    background: url(/static/bg.jpg) 50% 50%;
+    background-size: cover;
 }
 
 #sidebar div {
@@ -70,13 +71,13 @@ button, input, textarea {
 #sidebar li {
     padding: 15px 20px;
     display: block;
-    color: #666;
+    color: rgba(255, 255, 255, .7);
     transition: .25s;
     -webkit-transition: .25s;
 }
 
 #sidebar li:hover {
-    background: #f0f0f0;
+    background: rgba(0, 0, 0, .2);
 }
 
 #sidebar .footer {
@@ -85,21 +86,19 @@ button, input, textarea {
     width: inherit;
     line-height: 40px;
     font-size: 12px;
-    background: #f7f7f7;
-    color: #888;
-    box-shadow: 0 0 5px #ddd;
+    background: rgba(0, 0, 0, .1);
+    color: rgba(255, 255, 255, .4);
     padding: 5px 0;
 }
 
 #sidebar #player {
     position: fixed;
     width: 280px;
-    left: 0;
+    left: 20px;
     bottom: 50px;
     margin: 0;
     overflow: hidden;
-    background: #f7f7f7;
-    box-shadow: 0 -2px 1px #eaeaea;
+    display: none;
 }
 
 #sidebar #player .aplayer-list {
@@ -122,7 +121,7 @@ button, input, textarea {
 }
 
 #main {
-    margin-left: 280px;
+    margin-left: 320px;
     padding: 65px 65px;
 }
 
@@ -141,12 +140,13 @@ button, input, textarea {
 }
 
 .name {
-    margin-top: 20px;
-    font-size: 18px;
+    margin-top: 30px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, .8);
 }
 
 .profile {
-    color: #888;
+    color: rgba(255, 255, 255, .6);
     font-size: 14px;
 }
 
@@ -186,6 +186,13 @@ header {
     font-size: 22px;
     text-align: center;
     padding-bottom: 80px;
+}
+
+#nprogress {
+    position: absolute;
+    left: 320px;
+    right: 0;
+    width: auto;
 }
 
 @media screen and (min-width: 1400px) {
