@@ -37,8 +37,8 @@
             // 实现自动调整播放器高度，根据侧栏可用空间自动选择隐藏播放器或显示 0、1、2、… 个曲目
             $(window).resize(function() {
                 var t = $("#sidebar li").last().offset().top + 44
-                var b = $("#sidebar .footer").first().offset().top - $(document).scrollTop()
-                var maxHeight = b - t - 60 - 90
+                var b = $('#sidebar').height()
+                var maxHeight = b - t - 60 - 100
                 var rows = Math.floor(maxHeight / 33)
                 if (rows > -3 && rows < 0) {
                     rows = -3
