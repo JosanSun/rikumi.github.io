@@ -165,7 +165,7 @@ header {
     display: none;
 }
 
-#disqus_thread {
+#gitment {
     padding-top: 40px;
     user-select: none;
     -webkit-user-select: none;
@@ -207,7 +207,7 @@ header {
         margin-right: 360px;
     }
 
-    #disqus_thread {
+    #gitment {
         position: fixed;
         right: 0;
         top: 0;
@@ -225,7 +225,7 @@ header {
         margin-right: 480px;
     }
 
-    #disqus_thread {
+    #gitment {
         position: fixed;
         right: 0;
         top: 0;

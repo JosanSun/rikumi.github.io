@@ -9,12 +9,14 @@
     <!-- Fetched scripts -->
     <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://unpkg.com/docute@3.4.8/dist/docute.js"></script>
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 
     <!-- Local scripts -->
     <script src="/static/js/highlight.js"></script>
 
     <!-- Fetched stylesheets -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 
     <!-- Local stylesheets -->
     <link href="/static/css/markdown.css" rel="stylesheet">
@@ -70,7 +72,7 @@
     </div>
     <div id="main">
         <div id="app" class="markdown-body"></div>
-        <div id="disqus_thread"></div>
+        <div id="gitment"></div>
     </div>
     <script>
         String.prototype.hashCode = function() {
@@ -82,27 +84,6 @@
                 hash |= 0
             }
             return hash
-        };
-
-        var disqus_developer = 1
-    
-        function disqus_config() {
-            this.page.url = window.location.href.replace(/\/#/g, "")
-            this.page.identifier = window.location.hash.replace(/^#/g, "")
-        };
-
-        function loadDisqus(){
-            if (typeof DISQUS === 'object') {
-                DISQUS.reset({
-                    reload: true,
-                    config: disqus_config
-                })
-            } else {
-                var s = document.createElement('script'); s.async = true;
-                s.type = 'text/javascript';
-                s.src = '//rikuheya.disqus.com/embed.js';
-                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-            }
         };
 
         docute.init({
@@ -128,13 +109,26 @@
             }
         })
 
-        $(loadDisqus)
+        function loadGitment() {
+            var gitment = new Gitment({
+              id: window.location.hash,
+              owner: 'vhyme',
+              repo: 'RIKUheya',
+              oauth: {
+                client_id: '3077245be4e08bb70923',
+                client_secret: '5a94074aa86781825d714ad91b22d5de7604a5a2',
+              },
+            })
+            gitment.render('gitment')
+        }
+
+        $(loadGitment)
 
         docute.router.afterEach(function (to) {
             setTimeout(function() {
                 $('html,body').animate({scrollTop: '0px'}, 500)
 
-                loadDisqus()
+                loadGitment()
             })
         })
     </script>
