@@ -96,7 +96,7 @@ button, input, textarea {
     display: inline-block;
     width: 280px;
     bottom: 40px;
-    height: 90px;
+    height: 0;
     left: 50%;
     margin-left: -140px;
     overflow: hidden;
