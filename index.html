@@ -41,7 +41,10 @@
                 var maxHeight = b - t - 60 - 90
                 var rows = Math.floor(maxHeight / 33)
                 if (rows > -3 && rows < 0) {
-                    rows = 0
+                    rows = -3
+                }
+                if (rows == 0) {
+                    rows = 1
                 }
                 if (rows > 8) {
                     rows = 8
