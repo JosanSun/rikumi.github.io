@@ -98,7 +98,6 @@ button, input, textarea {
     bottom: 50px;
     margin: 0;
     overflow: hidden;
-    display: none;
 }
 
 #sidebar #player .aplayer-list {
