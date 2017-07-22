@@ -58,7 +58,7 @@
             })
         </script>
 
-        <div class="footer"></div>
+        <div class="footer">↓ 上拉阅读文章</div>
     </div>
     <div id="main">
         <div id="app" class="markdown-body"></div>
@@ -89,7 +89,7 @@
 
         docute.router.afterEach(function (to) {
             setTimeout(function() {
-                $('html,body').animate({scrollTop: '0px'}, 500)
+                $('html,body').animate({scrollTop: $('#sidebar').height() + 'px'}, 500)
             })
         })
     </script>
