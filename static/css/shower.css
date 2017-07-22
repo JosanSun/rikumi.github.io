@@ -86,7 +86,6 @@ button, input, textarea {
     width: inherit;
     line-height: 40px;
     font-size: 12px;
-    background: rgba(0, 0, 0, .1);
     color: rgba(255, 255, 255, .4);
     padding: 5px 0;
 }
