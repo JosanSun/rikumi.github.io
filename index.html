@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link rel="icon" type="image/png" sizes="80x80" href="/favicon.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="apple-icon.png" />
 
     <!-- Fetched scripts -->
     <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
@@ -20,16 +19,19 @@
     <link href="/static/css/shower.css?v=9" rel="stylesheet">
 
     <!-- Desktop App for my own iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-icon.png">
+    <link rel="apple-touch-startup-image" href="launch.jpg">
+    <meta name="apple-mobile-web-app-title" content="RIKUheya">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <title>RIKUheya</title>
 </head>
 <body onload="$(window).resize()">
     <div id="sidebar">
         <a href="/" router-link="/""><img class="avatar" ondragstart="return false" src="https://avatars1.githubusercontent.com/u/5051300"></a>
-        <div class="name">Riku</div>
-        <div class="profile">「右手携带左手爱」</div>
+        <p class="name">Riku</p>
+        <p class="profile" title="这是REOL歌曲「RE:」的第一句（右手に携帯、左手には愛）的省略，「携帯」是手机的意思，因为中日读法都押韵且恰为七个字，感觉很巧，所以作为slogan，想歪的同学请自觉🤔">「右手携带左手爱」</p>
         <br>
 
         <a class="link" href="/" router-link="/"><li>首页</li></a>
@@ -44,11 +46,8 @@
                 var b = $('#sidebar').height()
                 var maxHeight = b - t - 60 - 110
                 var rows = Math.floor(maxHeight / 33)
-                if (rows > -3 && rows < 0) {
+                if (rows <= 0) {
                     rows = -3
-                }
-                if (rows == 0) {
-                    rows = 1
                 }
                 if (rows > 8) {
                     rows = 8
@@ -58,7 +57,7 @@
             })
         </script>
 
-        <div class="footer">↓ 上拉阅读文章</div>
+        <div class="footer"><span class="mobile-only">↓ 上拉阅读文章</span></div>
     </div>
     <div id="main">
         <div id="app" class="markdown-body"></div>
