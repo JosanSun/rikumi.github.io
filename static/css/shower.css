@@ -69,15 +69,18 @@ button, input, textarea {
 }
 
 #sidebar li {
-    padding: 15px 20px;
-    display: block;
+    padding: 15px 0;
+    display: inline-block;
+    margin: 0 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, .7);
     color: rgba(255, 255, 255, .7);
     transition: .25s;
     -webkit-transition: .25s;
 }
 
 #sidebar li:hover {
-    background: rgba(0, 0, 0, .2);
+    border-bottom: 1px solid #fff;
+    color: #fff;
 }
 
 #sidebar .footer {
