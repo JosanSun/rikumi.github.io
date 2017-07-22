@@ -7,12 +7,6 @@
 
 经过又一整天的不务正业，把侧栏换了个样式，灵感来自[哔哩萌](https://www.bilimoe.com/#blog)，同时播放器继续在[APlayer](https://aplayer.js.org/)的基础上魔改，感谢漏气网红DIYGay提供轮子。
 
-## 本站正式接入 Disqus 评论框
-
-经过一上午的不务正业，终于接入了 Disqus，不指望有多少人评论，只是觉得你来我往的感觉更好些，也更像一个正经的博客。
-
-不仅文章页面，首页和404页都可以进行评论，只希望让小站热乎起来😝
-
 ## 开源 iOS 展开跳转+三向滑动返回动效框架 AnyPullBack 发布
 
 今天发布了人生第一个 Pod 项目，一个开源的 iOS 版三向滑动返回动效插件，跳转和返回手势的效果类似36氪和轻芒杂志，使用时只需引入 `AnyPullBackNavigationController` 即可直接使用。项目已发布到 Cocoapods，只需在 Podfile 引入 `pod 'AnyPullBack'` 即可使用。
