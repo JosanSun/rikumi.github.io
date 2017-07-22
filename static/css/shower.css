@@ -136,6 +136,7 @@ button, input, textarea {
 #main {
     margin-left: 360px;
     padding: 65px 65px;
+    position: relative;
 }
 
 #main.loading {
