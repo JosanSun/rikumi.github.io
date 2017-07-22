@@ -3,6 +3,10 @@
 欢迎光临 RIKUheya，这里是我的小站。
 <img width="390" height="456" src="http://static.myseu.cn/2017-07-07-sizuru.png" class="moe">
 
+## 侧栏换新衣啦~
+
+经过又一上午的不务正业，把侧栏换了个样式，灵感来自[哔哩萌](https://www.bilimoe.com/#blog)，同时播放器继续在[APlayer](https://aplayer.js.org/)的基础上魔改，感谢漏气网红DIYGay。
+
 ## 本站正式接入 Disqus 评论框
 
 经过一上午的不务正业，终于接入了 Disqus，不指望有多少人评论，只是觉得你来我往的感觉更好些，也更像一个正经的博客。
