@@ -1,6 +1,6 @@
 @font-face {
     font-family: "ShingoHeya";
-    src: url("http://static.myseu.cn/ShingoHeya.ttf") format("truetype");
+    src: url("/static/ShingoHeya.ttf") format("truetype");
 }
 
 a, a:link, a:hover, a:active, a:visited {
