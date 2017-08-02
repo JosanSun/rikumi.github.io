@@ -2,7 +2,7 @@
 	opacity: .5;
 }
 .markdown-body {
-	font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "PingFang SC", "Microsoft YaHei UI";
+	font-family: inherit;
 	font-size:16px;
 	line-height:1.5;
 	word-wrap:break-word;
