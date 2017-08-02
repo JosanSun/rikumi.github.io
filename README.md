@@ -1,11 +1,12 @@
 ## RIKUheyaへようこそ！
 
-欢迎光临 RIKUheya，这里是我的小站。
+欢迎光临 RIKUheya，这里是我的小站。最近更新记录：
 <img width="390" height="456" src="http://static.myseu.cn/2017-07-07-sizuru.png" class="moe">
 
-## ← 侧栏换新衣啦~
-
-经过又一整天的不务正业，把侧栏换了个样式，灵感来自[哔哩萌](https://www.bilimoe.com/#blog)，同时播放器继续在[APlayer](https://aplayer.js.org/)的基础上魔改，感谢漏气网红DIYGay提供轮子。
+- 2017/7/22 手机版完全重新设计，完整保留了新版侧栏作为封面屏。
+- 2017/7/22 侧栏更换样式，灵感来自[哔哩萌](https://www.bilimoe.com/#blog)，同时播放器继续在[APlayer](https://aplayer.js.org/)的基础上魔改，感谢漏气网红DIYGay提供轮子。
+- 2017/7/22 无奈之下去掉了只能科学访问的 Disqus 评论框，因为不科学的用户加载速度会很慢。
+- 2017/7/21 增加了 Disqus 评论框。
 
 ## 开源 iOS 展开跳转+三向滑动返回动效框架 AnyPullBack 发布
 
