@@ -1,8 +1,3 @@
-@font-face {
-    font-family: "ShingoHeya";
-    src: url("/static/ShingoHeya.ttf") format("truetype");
-}
-
 a, a:link, a:hover, a:active, a:visited {
     color: #a075b3;
 }
@@ -38,7 +33,7 @@ html, body {
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: "ShingoHeya", "PingFang SC", "Microsoft YaHei UI";
+    font-family: "Kozuka Gothic Pro", "Meiryo", "PingFang SC", "Microsoft YaHei UI";
     font-size: 14px;
     color: #333;
 }
