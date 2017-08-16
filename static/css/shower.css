@@ -58,7 +58,7 @@ button, input, textarea {
     line-height: 1em;
     -user-select: none;
     -webkit-user-select: none;
-    background: #e9e3ef url(http://static.myseu.cn/2017-08-16-FullSizeRender2-2.jpg) 50% 50%;
+    background: #e9e3ef url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-450882.jpg) 50% 50%;
     background-size: cover;
 }
 
@@ -104,6 +104,9 @@ button, input, textarea {
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -o-transition: .3s;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, .9);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
 }
 
 #sidebar #player .aplayer-list {
