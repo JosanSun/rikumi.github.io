@@ -4,7 +4,7 @@
 .markdown-body {
 	font-family: inherit;
 	font-size:16px;
-	line-height:1.5;
+	line-height:1.75;
 	word-wrap:break-word;
 	transition: .3s;
 	-webkit-transition: .3s;
@@ -84,6 +84,31 @@
 .markdown-body .loweralpha {
 	list-style-type:lower-alpha
 }
+.markdown-body h1::before {
+	content: '#';
+	color: rgba(0, 0, 0, .2);
+}
+.markdown-body h2::before {
+	content: '##';
+	color: rgba(0, 0, 0, .2);
+}
+.markdown-body h3::before {
+	content: '###';
+	color: rgba(0, 0, 0, .2);
+}
+.markdown-body h4::before {
+	content: '####';
+	color: rgba(0, 0, 0, .2);
+}
+.markdown-body h5::before {
+	content: '#####';
+	color: rgba(0, 0, 0, .2);
+}
+.markdown-body h6::before {
+	content: '######';
+	color: rgba(0, 0, 0, .2);
+}
+
 .markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6 {
 	margin-top:24px;
 	margin-bottom:16px;
