@@ -58,7 +58,7 @@ button, input, textarea {
     line-height: 1em;
     -user-select: none;
     -webkit-user-select: none;
-    background: #e9e3ef url(http://static.myseu.cn/2017-08-16-FullSizeRender2-1.jpg) 50% 50%;
+    background: #e9e3ef url(http://static.myseu.cn/2017-08-16-FullSizeRender2-2.jpg) 50% 50%;
     background-size: cover;
 }
 
@@ -199,6 +199,12 @@ header {
         display: block;
         position: relative;
         border-right: 0;
+    }
+
+    #sidebar .avatar {
+        width: 100px;
+        height: 100px;
+        margin-top: 40px;
     }
 
     #main {
