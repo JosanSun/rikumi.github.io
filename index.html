@@ -93,9 +93,8 @@
         docute.router.afterEach(function () {
             setTimeout(function() {
                 var height = 0;
-                var sidebar = $('#sidebar');
-                if (sidebar.offset().top !== 0) {
-                    height = sidebar.height()
+                if ($('body').width() <= 800) {
+                    height = $('#sidebar').height()
                 }
                 $('html,body').animate({scrollTop: height + 'px'}, 500)
             })
