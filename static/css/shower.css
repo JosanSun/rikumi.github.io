@@ -58,7 +58,7 @@ button, input, textarea {
     line-height: 1em;
     -user-select: none;
     -webkit-user-select: none;
-    background: #000 url(http://static.myseu.cn/zttylq1500736227.jpeg) 50% 50%;
+    background: #e9e3ef url(http://static.myseu.cn/2017-08-16-FullSizeRender2-1.jpg) 50% 50%;
     background-size: cover;
 }
 
@@ -70,15 +70,15 @@ button, input, textarea {
     padding: 15px 0;
     display: inline-block;
     margin: 0 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, .7);
-    color: rgba(255, 255, 255, .7);
+    border-bottom: 1px solid rgba(0, 0, 0, .7);
+    color: rgba(0, 0, 0, .7);
     transition: .25s;
     -webkit-transition: .25s;
 }
 
 #sidebar li:hover {
-    border-bottom: 1px solid #fff;
-    color: #fff;
+    border-bottom: 1px solid #333;
+    color: #333;
 }
 
 #sidebar .footer {
@@ -87,7 +87,7 @@ button, input, textarea {
     width: inherit;
     line-height: 40px;
     font-size: 12px;
-    color: rgba(255, 255, 255, .4);
+    color: rgba(0, 0, 0, .4);
     padding: 5px 0;
 }
 
@@ -133,11 +133,11 @@ button, input, textarea {
 #sidebar .name {
     margin-top: 30px;
     font-size: 20px;
-    color: rgba(255, 255, 255, .8);
+    color: rgba(0, 0, 0, .8);
 }
 
 #sidebar .profile {
-    color: rgba(255, 255, 255, .6);
+    color: rgba(0, 0, 0, .6);
     font-size: 14px;
     display: inline;
     line-height: 44px;
