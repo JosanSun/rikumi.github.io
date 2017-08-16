@@ -6,10 +6,6 @@ a, a:link, a:hover, a:active, a:visited {
     background: #a075b3;
 }
 
-#sidebar {
-    border-right: 2px solid #a075b3;
-}
-
 img.moe {
     position: fixed;
     right: 0;
@@ -20,9 +16,6 @@ img.moe {
 }
 
 @media screen and (max-width: 800px) {
-    #main {
-        border-top: 2px solid #a075b3;
-    }
     img.moe {
         display: none;
     }
@@ -117,6 +110,7 @@ button, input, textarea {
     margin-left: 360px;
     padding: 65px 65px;
     position: relative;
+    box-shadow: -20px -20px 30px rgba(0, 0, 0, .1);
 }
 
 #main.loading {

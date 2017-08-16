@@ -1,7 +1,6 @@
 ## RIKUheyaへようこそ！
 
 欢迎光临 RIKUheya，这里是我的小站。最近更新记录：
-<img width="390" height="456" src="http://static.myseu.cn/2017-07-07-sizuru.png" class="moe">
 
 - 2017/7/22 手机版完全重新设计，完整保留了新版侧栏作为封面屏。
 - 2017/7/22 侧栏更换样式，灵感来自[哔哩萌](https://www.bilimoe.com/#blog)，同时播放器继续在[APlayer](https://aplayer.js.org/)的基础上魔改，感谢漏气网红DIYGay提供轮子。
