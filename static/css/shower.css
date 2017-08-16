@@ -3,7 +3,7 @@ a, a:link, a:hover, a:active, a:visited {
 }
 
 ::selection, ::-webkit-selection {
-    background: #6e317a;
+    background: rgba(0, 0, 0, .1);
 }
 
 img.moe {
@@ -37,10 +37,6 @@ a, a:link, a:hover, a:active, a:visited {
 
 button, input, textarea {
     font-family: inherit;
-}
-
-::selection, ::-webkit-selection {
-    color: #ffffff;
 }
 
 #sidebar {
@@ -207,7 +203,7 @@ header {
     #main {
         display: block;
         margin: 0;
-        padding: 25px;
+        padding: 35px 25px;
         background: #fff;
         border-left: 0px;
         border-bottom: 1px solid #dddddd;
