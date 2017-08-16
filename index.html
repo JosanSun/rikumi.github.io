@@ -45,18 +45,19 @@
         <script>
             // 实现自动调整播放器高度，根据侧栏可用空间自动选择隐藏播放器或显示 0、1、2、… 个曲目
             $(window).resize(function() {
-                var t = $("#sidebar li").last().offset().top + 44
-                var b = $('#sidebar').height()
-                var maxHeight = b - t - 60 - 110
-                var rows = Math.floor(maxHeight / 33)
+                var sidebar = $("#sidebar");
+                var t = sidebar.find("li").last().offset().top + 44 - sidebar.last().offset().top;
+                var b = sidebar.height();
+                var maxHeight = b - t - 60 - 110;
+                var rows = Math.floor(maxHeight / 33);
                 if (rows <= 0) {
-                    rows = -3
+                    rows = -3;
                 }
                 if (rows > 8) {
-                    rows = 8
+                    rows = 8;
                 }
-                var height = rows * 33 + 89
-                $("#player").css("height", height)
+                var height = rows * 33 + 89;
+                $("#player").css("height", height);
             })
         </script>
 
@@ -82,18 +83,19 @@
                 smartypants: false,
                 highlight: function (code, lang) {
                     if (lang === "") {
-                        return hljs.highlightAuto(code).value
+                        return hljs.highlightAuto(code).value;
                     }
-                    return hljs.highlightAuto(code, [lang]).value
+                    return hljs.highlightAuto(code, [lang]).value;
                 }
             }
-        })
+        });
 
-        docute.router.afterEach(function (to) {
+        docute.router.afterEach(function () {
             setTimeout(function() {
-                var height = 0
-                if ($('#sidebar').offset().top != 0) {
-                    height = $('#sidebar').height()
+                var height = 0;
+                var sidebar = $('#sidebar');
+                if (sidebar.offset().top !== 0) {
+                    height = sidebar.height()
                 }
                 $('html,body').animate({scrollTop: height + 'px'}, 500)
             })
