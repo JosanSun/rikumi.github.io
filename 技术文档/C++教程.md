@@ -786,7 +786,7 @@ cout << p->x << endl;
    // 判断上次生产的结果能否被消费
    while (current != -1) {
      
-     	// 消费
+       // 消费
        count++;
        sum += current;
        
@@ -797,7 +797,7 @@ cout << p->x << endl;
 
    // 生产消费循环结束，计算平均值
    if (count == 0) {
-       cout << "你没有输入数字！"
+       cout << "你没有输入数字！" << endl;
    } else {
        double average = (double)sum / count;
        cout << "平均值为：" << average << endl;
@@ -824,21 +824,21 @@ cout << p->x << endl;
      
        if (current == -1) break; // 在循环中间判断
      
-     	// 消费
+       // 消费
        count++;
        sum += current;
    }
 
    // 生产消费循环结束，计算平均值
    if (count == 0) {
-       cout << "你没有输入数字！"
+       cout << "你没有输入数字！" << endl;
    } else {
        double average = (double)sum / count;
        cout << "平均值为：" << average << endl;
    }
    ```
 
-   这样也是可以接受的写法，但似乎多数程序员还是偏爱前一种，因为前一种在较大的算法中往往更清晰易懂；但如果生产的语句确实多而复杂，还是建议用第二种以避免代码重复。
+   这样也是可以接受的写法，但似乎多数程序员还是偏爱前一种，因为前一种的判断条件写在明显的地方，在较大的算法中往往更清晰易懂；但如果生产的语句确实多而复杂，还是建议用第二种以避免代码重复。
 
 ## 五、函数
 
