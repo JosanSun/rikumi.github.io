@@ -19,7 +19,7 @@
     <!-- Local stylesheets -->
     <link href="/static/css/markdown.css?v=3" rel="stylesheet">
     <link href="/static/css/nprogress.css?v=1" rel="stylesheet">
-    <link href="/static/css/shower.css?v=16" rel="stylesheet">
+    <link href="/static/css/shower.css?v=17" rel="stylesheet">
 
     <!-- Desktop App for my own iOS -->
     <link rel="apple-touch-icon" sizes="120x120" href="apple-icon.png">
@@ -32,7 +32,7 @@
 </head>
 <body onload="$(window).resize()">
     <div id="sidebar">
-        <a href="/" router-link="/"><img class="avatar" ondragstart="return false" src="https://avatars1.githubusercontent.com/u/5051300"></a>
+        <a href="/" router-link="/"><img class="avatar" ondragstart="return false" src="//avatars1.githubusercontent.com/u/5051300"></a>
         <p class="name">Riku</p>
         <p class="profile" title="这是REOL歌曲「RE:」的第一句（右手に携帯、左手には愛）的省略，「携帯」是手机的意思，因为中日读法都押韵且恰为七个字，感觉很巧，所以作为slogan，想歪的同学请自觉🤔">「右手携带左手爱」</p>
         <br>
@@ -40,7 +40,7 @@
         <a class="link" href="/" router-link="/"><li>首页</li></a>
         <a class="link" href="/关于我" router-link="/关于我"><li>关于我</li></a>
 
-        <iframe id="player" src="https://myseu.cn/apcloud/582976667?autoplay=false" frameborder="0"></iframe>
+        <iframe id="player" src="http://music.163.com/outchain/player?type=0&id=582976667&auto=0&height=430" frameborder="0"></iframe>
 
         <script>
             // 实现自动调整播放器高度，根据侧栏可用空间自动选择隐藏播放器或显示 0、1、2、… 个曲目
@@ -48,16 +48,8 @@
                 var sidebar = $("#sidebar");
                 var t = sidebar.find("li").last().offset().top + 44 - sidebar.last().offset().top;
                 var b = sidebar.height();
-                var maxHeight = b - t - 60 - 110;
-                var rows = Math.floor(maxHeight / 33);
-                if (rows <= 0) {
-                    rows = -3;
-                }
-                if (rows > 8) {
-                    rows = 8;
-                }
-                var height = rows * 33 + 89;
-                $("#player").css("height", height);
+                var maxHeight = b - t - 120;
+                $("#player").css("height", Math.max(maxHeight, 110));
             })
         </script>
 
