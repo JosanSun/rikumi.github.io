@@ -1,4 +1,4 @@
-<script src='https://unpkg.com/vue@2.5.2/dist/vue.js' />
+<script src='https://unpkg.com/vue@2.5.2/dist/vue.js'></script>
 
 <div id='app'>
   <h1>正则表达式游乐场</h1>
