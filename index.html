@@ -24,14 +24,14 @@
     <!-- Desktop App for my own iOS -->
     <link rel="apple-touch-icon" sizes="120x120" href="apple-icon.png">
     <link rel="apple-touch-startup-image" href="launch.jpg">
-    <meta name="apple-mobile-web-app-title" content="Rikumi"> 
+    <meta name="apple-mobile-web-app-title" content="Rikumi">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <title>Rikumi</title>
 </head>
 <body onload="$(window).resize()">
-    <div id="sidebar">
+    <div id="topbar">
         <a href="/" router-link="/"><img class="avatar" ondragstart="return false" src="//avatars1.githubusercontent.com/u/5051300"></a>
         <p class="name">Rikumi</p>
         <p class="profile">「右手携带左手爱」</p>
@@ -39,21 +39,8 @@
 
         <a class="link" href="/" router-link="/"><li>首页</li></a>
         <a class="link" href="/关于我" router-link="/关于我"><li>关于我</li></a>
-
-        <iframe id="player" src="//music.163.com/outchain/player?type=0&id=582976667&auto=0&height=430" frameborder="0"></iframe>
-
-        <script>
-            // 实现自动调整播放器高度，根据侧栏可用空间自动选择隐藏播放器或显示 0、1、2、… 个曲目
-            $(window).resize(function() {
-                var sidebar = $("#sidebar");
-                var t = sidebar.find("li").last().offset().top + 44 - sidebar.last().offset().top;
-                var b = sidebar.height();
-                var maxHeight = b - t - 120;
-                $("#player").css("height", Math.max(maxHeight, 110));
-            })
-        </script>
-
-        <div class="footer"><span class="mobile-only">↓ 上拉阅读文章</span></div>
+        <a class="link" href="http://music.163.com/playlist/582976667/18769885?userid=18769885"><li>BGM</li></a>
+        <a class="link" href="http://music.163.com/playlist/16249817/18769885?userid=18769885"><li>歌单</li></a>
     </div>
     <div id="main">
         <div id="app" class="markdown-body"></div>

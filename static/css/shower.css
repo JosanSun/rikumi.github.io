@@ -39,23 +39,36 @@ button, input, textarea {
     font-family: inherit;
 }
 
-#sidebar {
-    position: fixed;
-    width: 360px;
-    height: 100%;
+#topbar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    width: 100%;
+    max-width: 830px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     text-align: center;
     line-height: 1em;
     -user-select: none;
     -webkit-user-select: none;
-    background: #f5f5f7/* url(http://static.myseu.cn/zttylq1500736227.jpeg) 50% 50%*/;
-    background-size: cover;
+    background: rgba(255, 255, 255, .7);
+    margin: 0 auto;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    z-index: 999999;
 }
 
-#sidebar div {
+#topbar * + * {
+  margin-left: 10px;
+}
+
+#topbar div {
     padding: 5px 0 15px 0;
 }
 
-#sidebar li {
+#topbar li {
     padding: 15px 0;
     display: inline-block;
     margin: 0 15px;
@@ -65,51 +78,23 @@ button, input, textarea {
     -webkit-transition: .25s;
 }
 
-#sidebar li:hover {
+#topbar li:hover {
     border-bottom: 1px solid #333;
     color: #333;
 }
 
-#sidebar .footer {
-    position: fixed;
-    bottom: 0;
-    width: inherit;
-    line-height: 40px;
-    font-size: 12px;
-    color: rgba(0, 0, 0, .4);
-    padding: 5px 0;
-}
-
-#sidebar #player {
-    position: absolute;
-    display: inline-block;
-    width: 280px;
-    bottom: 50px;
-    height: 0;
-    left: 50%;
-    margin-left: -140px;
-    overflow: hidden;
-    transition: .3s;
-    -webkit-transition: .3s;
-    -moz-transition: .3s;
-    -o-transition: .3s;
-    border-radius: 5px;
-    opacity: 0.7;
-    /*background: rgba(0, 0, 0, .95);*/
-    /*box-shadow: 0 15px 30px rgba(0, 0, 0, .1);*/
-}
-
-#sidebar #player .aplayer-list {
-    max-height: 99px;
+#topbar #player {
+    width: 298px;
+    height: 52px;
 }
 
 #main {
-    margin-left: 360px;
-    padding: 65px 65px;
+    padding: 125px 65px 65px;
     position: relative;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     min-height: 100%;
     box-sizing: border-box;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
 #main.loading {
@@ -117,25 +102,21 @@ button, input, textarea {
     white-space: pre;
 }
 
-#sidebar .avatar {
-    width: 120px;
-    height: 120px;
+#topbar .avatar {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    margin-top: 60px;
-    display: inline;
     background: #f0f0f0;
 }
 
-#sidebar .name {
-    margin-top: 30px;
+#topbar .name {
     font-size: 20px;
     color: rgba(0, 0, 0, .8);
 }
 
-#sidebar .profile {
+#topbar .profile {
     color: rgba(0, 0, 0, .6);
     font-size: 14px;
-    display: inline;
     line-height: 44px;
 }
 
