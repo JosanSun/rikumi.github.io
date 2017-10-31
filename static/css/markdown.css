@@ -47,6 +47,8 @@
   margin-top: 0;
   margin-bottom: 16px;
   text-align: justify;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 .markdown-body hr {
   width: 50px;
