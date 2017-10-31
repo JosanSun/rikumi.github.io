@@ -43,7 +43,7 @@ button, input, textarea {
     top: 0;
     width: 100%;
     max-width: 960px;
-    padding: 0 65px;
+    padding: 0 65px; 
     height: 70px;
     display: flex;
     flex-direction: row;
