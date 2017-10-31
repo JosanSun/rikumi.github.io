@@ -33,7 +33,7 @@ P2P中的弦网络结构分析及其Python实现
 
 ## Python实现
 
-- 项目源码：`https://github.com/vhyme/ChordNetwork`
+- 项目源码：`https://github.com/rikumi/ChordNetwork`
 - 运行平台：`Python 3.5`及以上（iOS端`Pythonista`兼容）
 - 利用框架：`networkx` `matplotlib`
 

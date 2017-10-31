@@ -1,7 +1,8 @@
 ## 欢迎来访
 
-欢迎访问 RIKUheya，这里是我的小站。最近更新记录：
+欢迎访问 Rikumi，这里是我的小站。最近更新记录：
 
+- 2017/A/31 整站迁移到 GitHub Pages，同时为了防止重名，加了个尾巴叫 Rikumi~ kumi~ kumi~
 - 2017/8/17 整站迁移到 Vultr VPS，开启 BBR 算法，访问速度更快。
 - 2017/8/16 再次更换风格，主打小清新，优化阅读体验。
 - 2017/7/22 手机版完全重新设计，完整保留了新版侧栏作为封面屏。
@@ -11,7 +12,7 @@
 
 今天发布了人生第一个 Pod 项目，一个开源的 iOS 版三向滑动返回动效插件，跳转和返回手势的效果类似36氪和轻芒杂志，使用时只需引入 `AnyPullBackNavigationController` 即可直接使用。项目已发布到 Cocoapods，只需在 Podfile 引入 `pod 'AnyPullBack'` 即可使用。
 
-[项目地址](https://github.com/vhyme/AnyPullBack)
+[项目地址](https://github.com/rikumi/AnyPullBack)
 
 ## 博客首页播放器换成纯音BGM歌单
 
@@ -19,7 +20,7 @@
 
 由于网易云音乐接口的问题，偶尔可能会有 Error happens，不要惊慌，换个网络或者过一阵子应该就好了。
 
-查看歌单：[RIKUheya](http://music.163.com/playlist/582976667/18769885?userid=18769885)｜[我喜欢的音乐](http://music.163.com/playlist/16249817/18769885?userid=18769885)
+查看歌单：[Rikumi](http://music.163.com/playlist/582976667/18769885?userid=18769885)｜[我喜欢的音乐](http://music.163.com/playlist/16249817/18769885?userid=18769885)
 
 ## 考完啦，开始填坑
 
@@ -37,7 +38,7 @@
 
 高级数据结构研讨课的课件和项目，欢迎交流学习和使用。
 
-[项目主页](https://github.com/vhyme/ChordNetwork)｜[查看文档](/技术文档/ChordNetwork)
+[项目主页](https://github.com/rikumi/ChordNetwork)｜[查看文档](/技术文档/ChordNetwork)
 
 ## Git快速上手教程
 
@@ -59,7 +60,7 @@
 
 顺便感谢一些学长让我想起了深度优先遍历是啥😂
 
-[项目主页](https://github.com/vhyme/WXANavigationTester)
+[项目主页](https://github.com/rikumi/WXANavigationTester)
 
 ## 微信小程序教学参考 & iOS教学参考
 
@@ -82,7 +83,7 @@ ret = re.sub(u'[(（][\u2E80-\u4DFF]+[)）]', '', src)
 
 该项目完成后，作为一个轻量级竖版页面，可以直接作为iframe引用到博客中，通过url自定义要播放的歌单。你可以随意使用该站点，但如果对服务器造成流量冲击，该项目随时会下线，所以推荐自行下载代码，部署到自己的服务器上。
 
-[项目GitHub地址](https://github.com/vhyme/APCloud)丨[项目部署地址（含使用说明）](https://myseu.cn/apcloud/)丨[演示地址](https://myseu.cn/apcloud/16249817)
+[项目GitHub地址](https://github.com/rikumi/APCloud)
 
 ## [计软学生会] 我的16-17-2工作总结暨宣传部参考指南（秋季版）
 
