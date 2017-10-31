@@ -1,6 +1,6 @@
 # welco-mi~
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=0&id=582976667&auto=1&height=32" style="display: block; -webkit-filter: brightness(1.15); transform: translateX(-10px); margin: 20px 0"></iframe>
+<iframe class="music" frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=0&id=582976667&auto=1&height=32"></iframe>
 
 ## 欢迎来到全新 rikumi
 

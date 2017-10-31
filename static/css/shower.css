@@ -21,6 +21,13 @@ img.moe {
     }
 }
 
+iframe.music {
+   display: block;
+   -webkit-filter: brightness(1.1) contrast(1.15) grayscale(0.5) hue-rotate(-70deg);
+   transform: translateX(-10px);
+   margin: 20px 0
+}
+
 html, body {
     padding: 0;
     margin: 0;
