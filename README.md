@@ -1,38 +1,24 @@
-## 欢迎来访
+# welco-mi~
 
-欢迎访问 rikumi，这里是我的小站。最近更新记录：
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=0&id=582976667&auto=1&height=32" style="display: block; -webkit-filter: brightness(1.15); transform: translateX(-10px); margin: 20px 0"></iframe>
 
-- 2017/A/31 整站迁移到 GitHub Pages，同时为了防止重名，加了个尾巴叫 Rikumi~ kumi~ kumi~，另外利用 Safari Webkit 的动态模糊特性再次重新设计页面，侧栏统一改为顶栏，现在看起来更清爽啦
-- 2017/8/17 整站迁移到 Vultr VPS，开启 BBR 算法，访问速度更快。
-- 2017/8/16 再次更换风格，主打小清新，优化阅读体验。
-- 2017/7/22 手机版完全重新设计，完整保留了新版侧栏作为封面屏。
-- 2017/7/22 侧栏更换样式，灵感来自[哔哩萌](https://www.bilimoe.com/#blog)，同时播放器继续在[APlayer](https://aplayer.js.org/)的基础上魔改，感谢漏气网红DIYGay提供轮子。
+## 欢迎来到全新 rikumi
+
+- 整站迁移到 GitHub Pages，不再占用服务器空间~
+- 改名是因为 Riku 重名的太多了，多加了个音节取 umi（海）之意，按日本语读音为「里酷米」~
+- 利用 Safari Webkit 的动态模糊特性再次重新设计页面，更专注阅读和书写~
+
+## 微信开发专题讲座
+
+小猴偷米2017级第三次技术分享材料，关于微信公众号、Web 和小程序开发的杂谈。Web 方面，对于前端路由条件下的微信 `OAuth2 + JSSDK` 开发相关核心代码进行了展示。
+
+[查看文章](/技术文档/微信开发专题讲座)
 
 ## 开源 iOS 展开跳转+三向滑动返回动效框架 AnyPullBack 发布
 
 今天发布了人生第一个 Pod 项目，一个开源的 iOS 版三向滑动返回动效插件，跳转和返回手势的效果类似36氪和轻芒杂志，使用时只需引入 `AnyPullBackNavigationController` 即可直接使用。项目已发布到 Cocoapods，只需在 Podfile 引入 `pod 'AnyPullBack'` 即可使用。
 
 [项目地址](https://github.com/rikumi/AnyPullBack)
-
-## 博客首页播放器换成纯音BGM歌单
-
-如题，最近把博客首页播放器换成了BGM歌单，均为纯音乐，不太喜欢女声的可以试试这些。目前的音乐来源是罚抄神作「Rewrite」，以及「凪のあすから」和「あの夏で待ってる」原声带。
-
-由于网易云音乐接口的问题，偶尔可能会有 Error happens，不要惊慌，换个网络或者过一阵子应该就好了。
-
-查看歌单：[Rikumi](http://music.163.com/playlist/582976667/18769885?userid=18769885)｜[我喜欢的音乐](http://music.163.com/playlist/16249817/18769885?userid=18769885)
-
-## 考完啦，开始填坑
-
-> 消灭了 概率论 🔥233
-
-> 消灭了 数模 🔥233
-
-> 消灭了 信号 🔥233
-
-> 消灭了 计组 🔥233
-
-今天开始漫长的暑假填坑，首先把本站改成了纯前端项目，利用 [Docute](https://docutejs.org) 实现 GitHub 文章的前端获取和前端路由，现在 RikuHeya 和 HeyaData 合并成了一个项目，而且**所有的跳转都不会重载页面了（可以放心听我的歌单了）**
 
 ## P2P弦网络及其Python实现 - ChordNetwork
 
@@ -46,44 +32,11 @@
 
 [查看文档](/技术文档/Git快速上手)
 
-## 小猴偷米广告合作管理规范
-
-最近众多社团和学生组织开始利用小猴偷米轮播图作为宣传途径，因此润色了一下规范文档，张贴在此，供合作者参考。
-
-[查看文档](/技术文档/小猴偷米广告投放须知)
-
-## 新开坑：微信小程序跳转层数检测工具
-
-微信小程序提供了 `navigateTo` 和 `redirectTo` 两种方式可以进入新的页面，前者会打开新的界面（跳转），后者则会在原界面直接展示（重定向），而微信小程序限制了 `navigateTo` 跳转栈的层数不能超过5层。这就要求小程序中不能有过高的跳转栈，也不能有循环跳转。最近达人荟live新版小程序发布在即，由于界面太多，无法人工逐一检查多层跳转和循环跳转，所以花了一中午+一下午的时间写了这个Python脚本，用于检测微信小程序的多层跳转和循环跳转问题。
-
-该脚本先利用文件系统操作，列出当前小程序目录下所有的 `navigateTo` 跳转和 `redirectTo` 重定向；然后采用带权有向图结构，按照跳转权为1、重定向权为0，作出相应的出边表，然后从每个入度为0的节点开始，对这个图结构采用深度优先遍历，查找长度超过5的路径以及长度不为0的环。该脚本采用Python3编写，理论上兼容Python2，另外具有调试参数 `-d` 可以完整展示整个遍历过程。
-
-顺便感谢一些学长让我想起了深度优先遍历是啥😂
-
-[项目主页](https://github.com/rikumi/WXANavigationTester)
-
 ## 微信小程序教学参考 & iOS教学参考
 
 最近达人荟所属组织：创梦空间工作室最近准备招新，招收一些有相关兴趣的同学提供培养和实习机会，我也应邀担任微信小程序和iOS方向的负责人，根据要求写了一套微信小程序和iOS的简要参考文档，供学习者查阅。
 
 [微信小程序教学参考](/技术文档/微信小程序教学参考)｜[iOS教学参考](/技术文档/iOS教学参考)
-
-## 日文歌词去除注音的正则表达式
-
-在用我的APCloud播放器的时候，发现某些歌词有大量注音，歌词显示的空间不够，导致歌词显示不完整，于是打算用正则把它们统一去掉，经过多次踩坑和测试，下面这种方案最稳妥：
-
-```python
-## 去掉日文歌词的注音
-ret = re.sub(u'[(（][\u2E80-\u4DFF]+[)）]', '', src)
-```
-
-## 网易云在线歌单播放器项目APCloud基本完工
-
-昨天开坑了这个项目，目的是把[163music-APlayer-you-get-docker](https://github.com/YUX-IO/163music-APlayer-you-get-docker)项目所用的API升级成最新的网易云音乐API，以解决大多数歌曲无法播放问题。项目大部分采用了开源终端音乐播放器[musicbox](https://github.com/darknessomi/musicbox)所使用的API，mp3直链获取采用了[Meting](https://github.com/metowolf/Meting)项目提供的API和加密算法。由于musicbox核心代码均采用Python3编写，索性也把本博客站升级为Python3。在此特别感谢[163music-APlayer-you-get-docker](https://github.com/YUX-IO/163music-APlayer-you-get-docker)项目提供灵感，感谢[APlayer](https://github.com/DIYgod/APlayer)、[musicbox](https://github.com/darknessomi/musicbox)、[Meting](https://github.com/metowolf/Meting)项目提供轮子。
-
-该项目完成后，作为一个轻量级竖版页面，可以直接作为iframe引用到博客中，通过url自定义要播放的歌单。你可以随意使用该站点，但如果对服务器造成流量冲击，该项目随时会下线，所以推荐自行下载代码，部署到自己的服务器上。
-
-[项目GitHub地址](https://github.com/rikumi/APCloud)
 
 ## [计软学生会] 我的16-17-2工作总结暨宣传部参考指南（秋季版）
 
