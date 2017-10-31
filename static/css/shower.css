@@ -65,11 +65,18 @@ p {
     line-height: 1em;
     -user-select: none;
     -webkit-user-select: none;
-    background: rgba(255, 255, 255, .6);
+    background: rgba(255, 255, 255, .98);
     margin: 0 auto;
-    -webkit-backdrop-filter: blur(30px);
     z-index: 999999;
     box-sizing: border-box;
+}
+
+@supports (-webkit-backdrop-filter: blur(30px)) or (backdrop-filter: blur(30px)){
+  #topbar {
+    background: rgba(255, 255, 255, .6);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+  }
 }
 
 #topbar .gap {
