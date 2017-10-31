@@ -42,7 +42,8 @@ button, input, textarea {
     position: -webkit-sticky;
     top: 0;
     width: 100%;
-    max-width: 830px;
+    max-width: 960px;
+    padding: 0 65px;
     height: 70px;
     display: flex;
     flex-direction: row;
