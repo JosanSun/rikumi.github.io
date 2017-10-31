@@ -80,7 +80,6 @@
 	background-color:#fcfcfc;
 	border:solid 1px #ccc;
 	border-bottom-color:#bbb;
-	border-radius:3px;
 	box-shadow:inset 0 -1px 0 #bbb
 }
 .markdown-body .loweralpha {
@@ -217,7 +216,6 @@
 	max-width:100%;
 	box-sizing:content-box;
 	background-color:#fff;
-	border-radius: 4px;
 	-user-select: none;
 	-webkit-user-select: none;
 }
@@ -308,12 +306,8 @@
 }
 .markdown-body code,.markdown-body tt {
 	font: 95% "Source Code Pro", Consolas, "Liberation Mono", Menlo, Courier, monospace, "PingFang SC", "Microsoft YaHei UI";
-	padding:0;
-	padding-top:0.1em;
-	padding-bottom:0.2em;
-	margin:0 2.5px;
+	padding: 0.2em 2.5px;
 	background-color: rgba(0, 0, 0, .05);
-	border-radius:3px
 	user-select: auto;
 	-webkit-user-select: auto;
 }
@@ -329,7 +323,6 @@
 		-webkit-filter: blur(5px);
 		-moz-filter: blur(5px);
 		-o-filter: blur(5px);
-    border-radius: 3px;
     -transition: .25s;
     -webkit-transition: .25s;
     -moz-transition: .25s;
@@ -368,7 +361,6 @@
 	font-size:95%;
 	line-height:1.45;
 	background-color: rgba(0, 0, 0, .05);
-	border-radius:3px
 }
 .markdown-body pre {
 	background-color: #f7f7f7;

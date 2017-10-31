@@ -6,14 +6,28 @@ a, a:link, a:hover, a:active, a:visited {
     background: rgba(0, 0, 0, .1);
 }
 
-iframe.music {
+.music {
+  width:360px;
+  height:31px;
+  margin: 10px 0;
+  overflow:hidden;
+  position:sticky;
+  position:-webkit-sticky;
+  top: 125px;
+  border: 5px solid #fff;
+  outline: 1px solid rgba(0, 0, 0, .07);
+}
+
+.music iframe {
+  width:380px;
+  height:52px;
   display: block;
-  -webkit-filter: brightness(1.12) contrast(1.15) grayscale(0.5) hue-rotate(-70deg);
-  transform: translateX(-10px) scale(1.15);
-  transform-origin: 0 50%;
-  margin: 20px 0;
-  position: -webkit-sticky;
-  top: 120px;
+  -webkit-filter: contrast(1.4) grayscale(0.7) hue-rotate(-70deg);
+  position:absolute;
+  top:-10px;
+  left:-10px;
+  right:-10px;
+  bottom:-11px;
 }
 
 html, body {
@@ -41,6 +55,7 @@ p {
     position: -webkit-sticky;
     top: 0;
     max-width: 960px;
+    overflow: hidden;
     padding: 20px 65px;
     display: flex;
     flex-flow: row wrap;
