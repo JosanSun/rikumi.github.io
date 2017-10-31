@@ -6,21 +6,6 @@ a, a:link, a:hover, a:active, a:visited {
     background: rgba(0, 0, 0, .1);
 }
 
-img.moe {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    background-color: transparent;
-    opacity: .2;
-    pointer-events: none;
-}
-
-@media screen and (max-width: 800px) {
-    img.moe {
-        display: none;
-    }
-}
-
 iframe.music {
   display: block;
   -webkit-filter: brightness(1.12) contrast(1.15) grayscale(0.5) hue-rotate(-70deg);
@@ -62,7 +47,7 @@ p {
     line-height: 1em;
     -user-select: none;
     -webkit-user-select: none;
-    background: rgba(255, 255, 255, .7);
+    background: rgba(255, 255, 255, .6);
     margin: 0 auto;
     -webkit-backdrop-filter: blur(30px);
     z-index: 999999;

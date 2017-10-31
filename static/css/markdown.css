@@ -314,8 +314,8 @@
 	margin:0 2.5px;
 	background-color: rgba(0, 0, 0, .05);
 	border-radius:3px
-	user-select: all;
-	-webkit-user-select: all;
+	user-select: auto;
+	-webkit-user-select: auto;
 }
 .markdown-body code::before,.markdown-body code::after,.markdown-body tt::before,.markdown-body tt::after {
 	letter-spacing:-0.2em;
