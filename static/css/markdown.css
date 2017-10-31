@@ -8,6 +8,8 @@
 	word-wrap:break-word;
 	transition: .3s;
 	-webkit-transition: .3s;
+	user-select: none;
+	-webkit-user-select: none;
 }
 .markdown-body::before {
 	display:table;
@@ -122,7 +124,9 @@
 	visibility:visible
 }
 .markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code {
-	font-size:inherit
+	font-size:inherit;
+	user-select: all;
+	-webkit-user-select: all;
 }
 .markdown-body h1 {
 	padding-bottom:0.3em;
