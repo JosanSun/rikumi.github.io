@@ -22,10 +22,11 @@ img.moe {
 }
 
 iframe.music {
-   display: block;
-   -webkit-filter: brightness(1.1) contrast(1.15) grayscale(0.7) hue-rotate(-70deg);
-   transform: translateX(-10px);
-   margin: 20px 0
+  display: block;
+  -webkit-filter: brightness(1.12) contrast(1.15) grayscale(0.5) hue-rotate(-70deg);
+  transform: translateX(-10px) scale(1.15);
+  transform-origin: 0 50%;
+  margin: 20px 0;
 }
 
 html, body {
