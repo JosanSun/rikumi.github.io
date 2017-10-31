@@ -108,6 +108,8 @@ button, input, textarea {
     padding: 65px 65px;
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    min-height: 100%;
+    box-sizing: border-box;
 }
 
 #main.loading {
