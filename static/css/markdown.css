@@ -125,8 +125,6 @@
 }
 .markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code {
 	font-size:inherit;
-	user-select: all;
-	-webkit-user-select: all;
 }
 .markdown-body h1 {
 	padding-bottom:0.3em;
@@ -316,6 +314,8 @@
 	margin:0 2.5px;
 	background-color: rgba(0, 0, 0, .05);
 	border-radius:3px
+	user-select: all;
+	-webkit-user-select: all;
 }
 .markdown-body code::before,.markdown-body code::after,.markdown-body tt::before,.markdown-body tt::after {
 	letter-spacing:-0.2em;
