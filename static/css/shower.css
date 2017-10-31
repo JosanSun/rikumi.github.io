@@ -37,14 +37,18 @@ button, input, textarea {
     font-family: inherit;
 }
 
+p {
+    margin: 1em 0;
+}
+
 #topbar {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
     max-width: 960px;
-    padding: 0 65px;
+    padding: 20px 65px;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row wrap; 
     align-items: center;
     text-align: center;
     line-height: 1em;
