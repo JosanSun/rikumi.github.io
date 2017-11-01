@@ -337,6 +337,9 @@
 .markdown-body del:focus,
 .markdown-body del:active {
   -webkit-filter: none;
+  -moz-filter: none;
+  -o-filter: none;
+  filter: none;
 }
 .markdown-body pre {
   word-wrap: normal;
